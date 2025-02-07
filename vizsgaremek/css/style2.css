@@ -7,62 +7,50 @@ body {
     color: #111;
 }
 
-/* Header Styles */
 header {
-    display: flex;
-    justify-content: center; /* Középre igazítja az összes elemet */
-    align-items: center;
-    padding: 20px;
-    background: #111;
+    position: sticky; 
+    top: 0;           
+    z-index: 1000;    
+    background-color: #333; 
+    color: #ffc107;   
+    padding: 20px;    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+}
+
+h2, h3, h4 {
+    text-align: center;
+    color: #ffc107;
+}
+.cart-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.cart-icon a {
+    color: #ffc107; /* Yellow cart icon */
+    font-size: 1.5rem; /* Adjust icon size */
+    transition: color 0.3s ease;
+}
+
+.cart-icon a:hover {
+    color: #ffd54f; /* Highlighted color on hover */
+}
+
+header h1 {
     color: white;
 }
-
-.nav-container {
-    display: flex;
-    flex-direction: column; /* Az elemek függőlegesen lesznek, mivel a logo fent van */
-    align-items: center; /* Középre igazítja a logo-t és a linkeket */
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px; /* Kis távolság a logo és a linkek között */
-}
-
-nav {
-    display: flex; /* A linkek egymás mellett lesznek */
-    flex-direction: row; /* Linkek vízszintes elrendezése */
-    justify-content: center; /* A linkek középre igazítása */
-}
-
 nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px; /* Távolság a linkek között */
-    font-size: 16px;
-    text-transform: uppercase;
-}
-
-nav a:hover {
-    color: #f39c12;
-}
-
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
     margin: 0 15px;
-    font-size: 16px;
-    text-transform: uppercase;
+    color: #fff;
 }
-
 nav a:hover {
-    color: #f39c12;
+    color: #ffc107;
+}
+main {
+    padding: 20px;
 }
 
 /* Hero Section */
@@ -153,6 +141,155 @@ nav a:hover {
 .buy-btn:hover {
     background: #f39c12;
 }
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #111;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: center; /* Középre igazítja az összes elemet */
+    align-items: center;
+    padding: 20px;
+    background: #111;
+    color: white;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: column; /* Az elemek függőlegesen lesznek, mivel a logo fent van */
+    align-items: center; /* Középre igazítja a logo-t és a linkeket */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px; /* Kis távolság a logo és a linkek között */
+}
+
+nav {
+    display: flex; /* A linkek egymás mellett lesznek */
+    flex-direction: row; /* Linkek vízszintes elrendezése */
+    justify-content: center; /* A linkek középre igazítása */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px; /* Távolság a linkek között */
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color: #f39c12;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    color: black; /* Fekete szín */
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6); /* Fehér árnyék, hogy kiemelje */
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin: 10px 0 20px;
+    color: black; /* Fekete szín */
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6); /* Finom fehér árnyék */
+}
+
+.shop-now-btn {
+    background: #f39c12;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.shop-now-btn:hover {
+    background: #e67e22;
+}
+
+/* About Section */
+#about { /* About szakasz stílusa */
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#about h2 { /* About h2 cím stílusa */
+    font-size: 2.5rem;
+    color: #111;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#about h3 { /* About h3 cím stílusa */
+    font-size: 1.8rem;
+    color: #333;
+    margin-top: 30px;
+}
+
+#about p { /* About szöveges tartalom stílusa */
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 80%;
+    margin: 15px auto;
+    color: #444;
+}
+
+#about address { /* About cím stílusa */
+    font-size: 1.2rem;
+    color: #111;
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: bold;
+}
+
+#about a { /* About linkek stílusa */
+    color: #f39c12;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#about a:hover { /* About linkek hover stílusa */
+    color: #e67e22;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    color: white;
+    margin-top: 40px;
+}
+
 
 /* Footer */
 footer {
