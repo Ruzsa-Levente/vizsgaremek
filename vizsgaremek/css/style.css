@@ -805,4 +805,111 @@ select {
     background: #e1b382;
     transform: scale(1.05);
 }
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Távolság a kép és a név között */
+}
 
+.cart-item-image {
+    width: 50px;  /* Kisebb méretű képek */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cart-item-name {
+    flex-grow: 1; /* Hogy a név kitöltse a helyet */
+}
+
+.quantity-btn {
+    padding: 5px 10px;
+    font-size: 16px;
+    margin-left: 5px;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+.cart-item-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.cart-item-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.cart-item-name {
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.cart-item-price {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.quantity-btn {
+    background-color: #ddd;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.quantity-btn {
+    background-color: #c89666; /* Ugyanaz, mint a Place Order gomb */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.quantity-btn:hover {
+    background-color: #e1b382; /* Sötétebb kék hover állapot */
+}
+
+
+.quantity-btn:hover {
+    background-color: #e1b382; /* Sötétebb kék hover állapot */
+}
+
+
+
+.quantity-display {
+    font-size: 14px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.remove-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin-left: 10px;
+}
+
+.remove-btn:hover {
+    background-color: #cc0000;
+}
