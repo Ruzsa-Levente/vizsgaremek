@@ -1,53 +1,99 @@
 let cart = [];
 
-// Add product to cart
-function addToCart(productName, price) {
-    cart.push({ name: productName, price: price });
+// Add product to cart (with quantity handling)
+function addToCart(productName, price, imageUrl) {
+    let existingProduct = cart.find(item => item.name === productName);
+
+    if (existingProduct) {
+        existingProduct.quantity += 1; // Ha már létezik, növeli a mennyiséget
+    } else {
+        cart.push({ name: productName, price: price, imageUrl: imageUrl, quantity: 1 });
+    }
+
     saveCartToLocalStorage();
     updateReceipt();
-    updateCartCount(); // Update cart count after adding a product
+    updateCartCount();
 }
 
-// Remove product from cart
-function removeFromCart(index) {
-    cart.splice(index, 1); // Remove the item at the specified index
+// Increase quantity of a product
+function increaseQuantity(productName) {
+    let product = cart.find(item => item.name === productName);
+
+    if (product) {
+        product.quantity += 1;
+    }
+
     saveCartToLocalStorage();
     updateReceipt();
-    updateCartCount(); // Update cart count after removing a product
+    updateCartCount();
 }
 
-// Update receipt on the billing page
+// Remove product from cart (reduce quantity or remove if 1)
+function removeFromCart(productName) {
+    let productIndex = cart.findIndex(item => item.name === productName);
+
+    if (productIndex !== -1) {
+        if (cart[productIndex].quantity > 1) {
+            cart[productIndex].quantity -= 1;
+        } else {
+            cart.splice(productIndex, 1); // Ha már csak 1 db van, akkor teljesen eltávolítjuk
+        }
+    }
+
+    saveCartToLocalStorage();
+    updateReceipt();
+    updateCartCount();
+}
 function updateReceipt() {
     const cartItems = document.getElementById('cart-items');
     const totalDisplay = document.getElementById('total');
-    
-    // If these elements don't exist, just return
+
     if (!cartItems || !totalDisplay) return;
 
     cartItems.innerHTML = ''; // Clear current items
     let total = 0;
 
-    cart.forEach((item, index) => {
+    cart.forEach(item => {
         const li = document.createElement('li');
+        li.classList.add("cart-item"); // Stílushoz class
+
         li.innerHTML = `
-            ${item.name} - $${item.price.toFixed(2)} 
-            <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+            <div class="cart-item-content">
+                <img src="${item.imageUrl}" alt="${item.name}" class="cart-item-image">
+                <span class="cart-item-name">${item.name}</span>
+                <span class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
+                <button class="quantity-btn" onclick="removeFromCart('${item.name}')">−</button>
+                <span class="quantity-display">${item.quantity}</span>
+                <button class="quantity-btn" onclick="increaseQuantity('${item.name}')">+</button>
+                <button class="remove-btn" onclick="deleteFromCart('${item.name}')">Remove</button>
+            </div>
         `;
+
         cartItems.appendChild(li);
-        total += item.price;
+        total += item.price * item.quantity;
     });
 
     totalDisplay.textContent = `Total: $${total.toFixed(2)}`;
 }
 
+
+
+// Delete product from cart instantly
+function deleteFromCart(productName) {
+    cart = cart.filter(item => item.name !== productName); // Törli az adott terméket a kosárból
+    saveCartToLocalStorage(); // Frissíti a tárolt kosarat
+    updateReceipt(); // Frissíti a megjelenítést
+    updateCartCount(); // Kosár ikon frissítése
+}
+
+
 // Update cart count on the index page
 function updateCartCount() {
     const cartCount = document.getElementById('cart-count');
-    
-    // If cart-count element doesn't exist, just return
     if (!cartCount) return;
 
-    cartCount.textContent = cart.length;
+    let itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = itemCount;
 }
 
 // Save cart to localStorage
@@ -61,16 +107,17 @@ function loadCartFromLocalStorage() {
     if (savedCart) {
         cart = JSON.parse(savedCart);
         updateReceipt();
-        updateCartCount(); // Make sure cart count is updated after loading the cart
+        updateCartCount();
     }
 }
 
 // Load the cart when the page loads
 document.addEventListener('DOMContentLoaded', function () {
     loadCartFromLocalStorage();
-    updateCartCount(); // Update cart count when the page loads
-    updateReceipt(); // Update receipt for billing page if necessary
+    updateCartCount();
+    updateReceipt();
 });
+
 
 // Redirect to product page on click
 function redirectToProduct(productId) {
@@ -125,7 +172,6 @@ function nextImage() {
 
 
 //Order Summarizing Process
-
 document.addEventListener("DOMContentLoaded", function () {
     const placeOrderBtn = document.getElementById("place-order-btn");
     const orderSummary = document.getElementById("order-summary");
@@ -135,13 +181,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (placeOrderBtn) {
         placeOrderBtn.addEventListener("click", function () {
             // Kosár elemek összegyűjtése
-            const cartItems = [];
-            document.querySelectorAll("#cart-items li").forEach(item => {
-                const parts = item.textContent.split(" - $");
-                if (parts.length === 2) {
-                    cartItems.push({ name: parts[0], price: parseFloat(parts[1]) });
-                }
-            });
+            const cartItems = cart.map(item => ({
+                name: item.name,
+                price: item.price * item.quantity, // Mennyiséggel megszorozva
+                quantity: item.quantity
+            }));
 
             if (cartItems.length === 0) {
                 alert("Your cart is empty!");
@@ -167,6 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+
     // Ha az orderSummary létezik, akkor a pay.php oldalon vagyunk
     if (orderSummary) {
         const orderDetails = JSON.parse(localStorage.getItem("orderDetails"));
@@ -177,12 +222,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Megjeleníti a rendelési tételeket
-        const orderItems = document.getElementById("order-items");
-        orderDetails.cartItems.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
-            orderItems.appendChild(li);
-        });
+        // Megjeleníti a rendelési tételeket a fizetési oldalon mennyiséggel együtt
+const orderItems = document.getElementById("order-items");
+orderDetails.cartItems.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} (x${item.quantity}) - Total: $${item.price.toFixed(2)}`;
+    orderItems.appendChild(li);
+});
 
         document.getElementById("order-total").textContent = `Total: $${orderDetails.total}`;
         const deliveryMethod = orderDetails.delivery === "home" ? "Home Delivery" : "In-Store Pickup";
