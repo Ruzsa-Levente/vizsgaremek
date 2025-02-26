@@ -104,8 +104,9 @@ $main_image = !empty($images) ? $images[0] : "no-image.jpg";
 
                 <!-- Kosárba rakás és Vásárlás gombok -->
                 <div class="product-buttons">
-                    <button class="buy-btn" onclick="addToCart('<?= htmlspecialchars($product['nev']); ?>', <?= $product['ar']; ?>)">Add to cart</button>
-                    <button class="buy-btn" onclick="addToCart('<?= htmlspecialchars($product['nev']); ?>', <?= $product['ar']; ?>); window.location.href='billing.php'">Buy now</button>
+                <button class="buy-btn" onclick="addToCart('<?= htmlspecialchars($product['nev']); ?>', <?= $product['ar']; ?>, 'kepek/<?= htmlspecialchars($main_image); ?>')">Add to cart</button>
+                <button class="buy-btn" onclick="addToCart('<?= htmlspecialchars($product['nev']); ?>', <?= $product['ar']; ?>, 'kepek/<?= htmlspecialchars($main_image); ?>'); window.location.href='billing.php'">Buy now</button>
+
                 </div>
             </div>
         </div>
