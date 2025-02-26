@@ -43,7 +43,7 @@
         <h2>Your receipt</h2>
         <div id="receipt">
             <ul id="cart-items"></ul>
-            <p id="total">Total: $0.00</p>
+            <p id="total">Total: 0.00Ft</p>
 
             
         <!-- Delivery Options Form -->
