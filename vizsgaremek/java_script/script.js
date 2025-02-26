@@ -61,7 +61,7 @@ function updateReceipt() {
             <div class="cart-item-content">
                 <img src="${item.imageUrl}" alt="${item.name}" class="cart-item-image">
                 <span class="cart-item-name">${item.name}</span>
-                <span class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
+                <span class="cart-item-price">${(item.price * item.quantity).toFixed(2)} Ft</span>
                 <button class="quantity-btn" onclick="removeFromCart('${item.name}')">−</button>
                 <span class="quantity-display">${item.quantity}</span>
                 <button class="quantity-btn" onclick="increaseQuantity('${item.name}')">+</button>
@@ -73,7 +73,7 @@ function updateReceipt() {
         total += item.price * item.quantity;
     });
 
-    totalDisplay.textContent = `Total: $${total.toFixed(2)}`;
+    totalDisplay.textContent = `Total: ${total.toFixed(2)} Ft`;
 }
 
 
@@ -226,11 +226,11 @@ document.addEventListener("DOMContentLoaded", function () {
 const orderItems = document.getElementById("order-items");
 orderDetails.cartItems.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `${item.name} (x${item.quantity}) - Total: $${item.price.toFixed(2)}`;
+    li.textContent = `${item.name} (x${item.quantity}) - Total: Ft${item.price.toFixed(2)}`;
     orderItems.appendChild(li);
 });
 
-        document.getElementById("order-total").textContent = `Total: $${orderDetails.total}`;
+        document.getElementById("order-total").textContent = `Total: Ft${orderDetails.total}`;
         const deliveryMethod = orderDetails.delivery === "home" ? "Home Delivery" : "In-Store Pickup";
         document.getElementById("delivery-method").textContent = `Delivery Method: ${deliveryMethod}`;
 
