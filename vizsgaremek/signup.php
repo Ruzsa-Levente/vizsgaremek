@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Signup</title>
 </head>
-<body class="reptile-bg">
+<body class="hexa-bg">
 
 <?php
 require("php/connect.php");
@@ -41,16 +41,17 @@ require("php/connect.php");
     </div>
 </div>
     </div>
-</header>
+    </header>
 
-<h3 id="signup-text">Signup for our exclusive discounts and more!</h3>
-    <div class="signup">
-        <form action="signup.php" method="post">
-        <input type="text" name="name" placeholder="Name" required>
+<h3 id="signup-text">Signup if you dont have an account yet!</h3>
+<div class="signup">
+    <form action="php/signup_process.php" method="post">
+        <input type="text" name="felhasznalonev" placeholder="Username" required>
         <input type="email" name="email" placeholder="E-mail" required>
-        <button>Signup</button>
-        </form>
-    </div>
+        <input type="password" name="jelszo" placeholder="Password" required>
+        <button type="submit">Signup</button>
+    </form>
+</div>
 
 <script src="java_script/script.js"></script>
 <footer>
