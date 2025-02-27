@@ -1,28 +1,12 @@
 <?php
 session_start();
-require("php/connect.php");
-
-// Placeholder for login credentials (you should replace this with real database queries)
-$valid_username = 'user123';
-$valid_password = 'password123';
-
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Capture form data
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Validate credentials (replace with database check in a real scenario)
-    if ($username === $valid_username && $password === $valid_password) {
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-        header("Location: dashboard.php"); // Redirect to a protected page
-        exit;
-    } else {
-        $error_message = "Invalid username or password!";
-    }
+// Ha már be vagy jelentkezve, ne jelenjen meg a login oldal, hanem irányíts a profil oldalra
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    header("Location: profile.php"); // Itt irányítjuk a profil oldalra
+    exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="hu">
@@ -35,60 +19,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body class="reptile-bg">
 
-<?php require("php/connect.php"); ?>
-
 <header>
-    <div class="nav-container">
-        <div class="logo" onclick="window.location.href='index.php'">
-            <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
-        </div>
+<div class="nav-container">
+<div class="logo" onclick="window.location.href='index.php'">
+    <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
+    </div>
         <nav>
-            <a href="index.php">Home</a>
-            <a href="#products">Clothes</a>
+            <a href="index.php" >Home</a>
+            <a href="index.php#products">Clothes</a>
             <a href="signup.php">Sign Up</a>
             <a href="about.php">About Us</a>
         </nav>
         <div class="nav-icons">
-            <div class="cart-icon">
-                <a href="billing.php">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-count">0</span>
-                </a>
-            </div>
-            <div class="user-icon">
-                <a href="login.php">
-                    <i class="fas fa-user"></i>
-                </a>
-            </div>
-        </div>
+    <!-- Kosár ikon -->
+    <div class="cart-icon">
+        <a href="billing.php">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </a>
     </div>
-</header>
+
+    <!-- Felhasználó ikon -->
+    <div class="user-icon">
+        <a href="login.php">
+            <i class="fas fa-user"></i>
+        </a>
+    </div>
+</div>
+    </div>
+    </header>
 
 <main>
     <section class="login-section">
         <div class="login-container">
             <h2>Login</h2>
-            
-            <?php if (isset($error_message)): ?>
-                <p class="error-message"><?= $error_message ?></p>
-            <?php endif; ?>
 
-            <form action="login.php" method="POST">
+            <?php
+            if (isset($_GET['error'])) {
+                if ($_GET['error'] == "1") {
+                    echo "<p class='error-message'>Hibás felhasználónév vagy jelszó!</p>";
+                } elseif ($_GET['error'] == "db") {
+                    echo "<p class='error-message'>Adatbázishiba! Próbáld újra később.</p>";
+                }
+            }
+            ?>
+
+            <form action="php/login_process.php" method="POST">
                 <div class="form-group">
-                    <label for="username">Username:</label>
+                    <label for="username">Felhasználónév:</label>
                     <input type="text" id="username" name="username" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password">Jelszó:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Bejelentkezés">
                 </div>
             </form>
-            
+
             <div class="redirect">
-                <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+                <p>Még nincs fiókod? <a href="signup.php">Regisztrálj!</a></p>
             </div>
         </div>
     </section>
