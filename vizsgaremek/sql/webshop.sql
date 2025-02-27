@@ -39,3 +39,11 @@ CREATE TABLE tetelek (
     FOREIGN KEY (termek_azon) REFERENCES termekek(azon)
 );
 
+CREATE TABLE felhasznalok (
+    azon INT AUTO_INCREMENT PRIMARY KEY,
+    felhasznalonev VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    jelszo VARCHAR(255) NOT NULL,
+    jogosultsag ENUM('user', 'admin', 'superadmin') NOT NULL DEFAULT 'user'
+);
+
