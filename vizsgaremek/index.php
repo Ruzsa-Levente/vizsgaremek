@@ -14,13 +14,13 @@
 <?php require("php/connect.php"); ?>
 
 <header>
-    <div class="nav-container">
-    <div class="logo" onclick="window.location.href='index.php'">
+<div class="nav-container">
+<div class="logo" onclick="window.location.href='index.php'">
     <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
     </div>
         <nav>
-            <a href="index.php" class="current-page">Home</a>
-            <a href="#products">Clothes</a>
+            <a href="index.php " class="current-page">Home</a>
+            <a href="index.php#products">Clothes</a>
             <a href="signup.php">Sign Up</a>
             <a href="about.php">About Us</a>
         </nav>
@@ -41,7 +41,8 @@
     </div>
 </div>
     </div>
-</header>
+    </header>
+
 
 <section class="hero">
     <div class="hero-content">
