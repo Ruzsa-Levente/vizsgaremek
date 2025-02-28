@@ -990,3 +990,119 @@ select {
     background-color: #e1b382;
     transform: scale(1.05);
 }
+
+
+/*admin user management section*/
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: white;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.inline-form {
+    display: inline-block;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.back-button {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #ff9800;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/*admin order managemnet section*/
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: white;
+}
+
+.order-table th, .order-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.order-table th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.inline-form {
+    display: inline-block;
+}
+
+.delete-button, .status-button, .view-button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+}
+
+.status-button {
+    background-color: blue;
+    color: white;
+}
+
+.view-button {
+    background-color: orange;
+    color: white;
+}
+
+.back-button {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #ff9800;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*manage products style*/
+.white{
+    color: white;
+}
