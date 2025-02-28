@@ -19,33 +19,33 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 <header>
 <div class="nav-container">
-<div class="logo" onclick="window.location.href='index.php'">
-    <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
+    <div class="logo" onclick="window.location.href='index.php'">
+        <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
     </div>
-        <nav>
-            <a href="index.php" >Home</a>
-            <a href="index.php#products">Clothes</a>
-            <a href="signup.php">Sign Up</a>
-            <a href="about.php">About Us</a>
-        </nav>
-        <div class="nav-icons">
-    <!-- Kosár ikon -->
-    <div class="cart-icon">
-        <a href="billing.php">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cart-count">0</span>
-        </a>
-    </div>
+    <nav>
+        <a href="index.php">Home</a>
+        <a href="index.php#products">Clothes</a>
+        <a href="signup.php">Sign Up</a>
+        <a href="about.php">About Us</a>
+    </nav>
+    <div class="nav-icons">
+        <!-- Kosár ikon -->
+        <div class="cart-icon">
+            <a href="billing.php">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a>
+        </div>
 
-    <!-- Felhasználó ikon -->
-    <div class="user-icon">
-        <a href="login.php">
-            <i class="fas fa-user"></i>
-        </a>
+        <!-- Felhasználó ikon -->
+        <div class="user-icon">
+            <a href="login.php">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
     </div>
 </div>
-    </div>
-    </header>
+</header>
 
 <main>
     <section class="profile-section">
@@ -54,6 +54,12 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <p>Felhasználónév: <?= htmlspecialchars($_SESSION['username']); ?></p>
             <p>Email: <?= htmlspecialchars($_SESSION['email']); ?></p>
             <p>Jogosultság: <?= htmlspecialchars($_SESSION['jogosultsag']); ?></p>
+
+            <?php if (isset($_SESSION['jogosultsag']) && ($_SESSION['jogosultsag'] === 'admin' || $_SESSION['jogosultsag'] === 'superadmin')): ?>
+                <form action="admin.php" method="GET">
+                    <button type="submit" class="admin-button">Admin Page</button>
+                </form>
+            <?php endif; ?>
 
             <form action="php/logout.php" method="POST">
                 <button type="submit">Kijelentkezés</button>
