@@ -13,4 +13,11 @@ try {
     echo "Connection failed: " . $e->getMessage();
     exit();
 }
+
+// MySQLi kapcsolat létrehozása
+$conn = new mysqli("localhost", $username, $password, "webshop");
+
+if ($conn->connect_error) {
+    die("Kapcsolati hiba: " . $conn->connect_error);
+}
 ?>
