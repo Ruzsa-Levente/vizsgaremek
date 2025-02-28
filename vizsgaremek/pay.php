@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Payment</title>
 </head>
 <body class="reptile-bg">
@@ -14,14 +15,28 @@ require("php/connect.php");
 
 <header>
     <div class="nav-container">
-    <div class="logo" onclick="window.location.href='index.php'">
-    <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
-    </div>
+        <div class="logo" onclick="window.location.href='index.php'">
+            <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
+        </div>
         <nav>
-            <a href="index.php" class="active">Home</a>
-            <a href="billing.php">Back to Cart</a>
+            <a href="index.php">Home</a>
+            <a href="index.php#products">Clothes</a>
             <a href="signup.php">Sign Up</a>
+            <a href="about.php">About Us</a>
         </nav>
+        <div class="nav-icons">
+            <div class="cart-icon">
+                <a href="billing.php">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </div>
+            <div class="user-icon">
+                <a href="profile.php">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </header>
 
