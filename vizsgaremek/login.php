@@ -26,7 +26,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     </div>
         <nav>
             <a href="index.php" >Home</a>
-            <a href="index.php#products">Clothes</a>
+              <a href="clothes.php">Clothes</a>
             <a href="signup.php">Sign Up</a>
             <a href="about.php">About Us</a>
         </nav>
