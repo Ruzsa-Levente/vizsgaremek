@@ -43,6 +43,7 @@ $main_image = !empty($images) ? $images[0] : "no-image.jpg";
     </div>
             <nav>
                 <a href="index.php">Home</a>
+                 <a href="clothes.php">Clothes</a>
                 <a href="signup.php">Sign Up</a>
                 <a href="about.php">About Us</a>
             </nav>
