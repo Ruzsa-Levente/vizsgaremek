@@ -182,6 +182,17 @@ main {
     color: white; /* Fekete szín */
     text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6); /* Finom fehér árnyék */
 }
+.shop-now-btn {
+    padding: 10px 20px;
+    background-color: #f04d23; /* Szín lehet bármi */
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+}
+
+
 
 /*Slider section*/
 
@@ -1105,4 +1116,640 @@ select {
 /*manage products style*/
 .white{
     color: white;
+}
+
+/* Modern style for the 'Proceed to Payment' button */
+#pay-now-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%; /* Full width */
+    transition: all 0.3s ease;
+    margin-bottom: 10px; /* Space between buttons */
+}
+
+/* Hover effect for 'Proceed to Payment' */
+#pay-now-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+#pay-now-btn:focus {
+    outline: none;
+}
+
+/* Modern style for the 'Back to Cart' button */
+#back-to-cart-btn {
+    background-color: #FF6F61; /* Modern color */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    width: auto; /* Not full width */
+    transition: all 0.3s ease;
+    margin-top: 10px; /* Space between buttons */
+    margin-left: auto;
+    margin-right: auto; /* Center it */
+    display: block; /* Ensures it's a block-level element */
+}
+
+/* Hover effect for 'Back to Cart' */
+#back-to-cart-btn:hover {
+    background-color: #FF4B3E;
+    transform: translateY(-2px);
+}
+
+#back-to-cart-btn:focus {
+    outline: none;
+}
+
+
+/* Style for the search container to position it correctly */
+.search-container {
+    position: absolute;
+    top: 50%;  /* Vertically center the search container */
+    right: 130px;  /* Position it towards the right, adjust if needed */
+    transform: translateY(-50%); /* Center it vertically */
+    display: flex;
+    align-items: center;
+    z-index: 1000;  /* Ensure it's on top */
+}
+
+/* Style for the search input */
+.search-container input[type="text"] {
+    display: none;
+    position: absolute;
+    padding: 5px 20px;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    font-size: 14px;
+    width: 200px;
+    transition: all 0.3s ease;
+    right: 35px;  /* Adjust this to position the input left of the icon */
+}
+
+/* When the input is focused or active, make it appear */
+.search-container.active input[type="text"] {
+    display: block;
+    width: 250px;  /* Adjust width of the text field */
+    right: 35px;   /* Adjust this to position the input left of the icon */
+}
+
+/* Style for the search icon */
+.search-container i {
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-left: 0; /* Remove margin to align it with the input */
+}
+/* When the user hovers over the search icon */
+.search-container i:hover {
+    color: #f39c12; /* Példa: narancssárga szín */
+}
+.product {
+    position: relative;
+    overflow: hidden; /* Elrejti a modell képet alapértelmezetten */
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+}
+
+.default-image {
+    width: 100%;
+    transition: opacity 0.3s ease; /* Átmenet a képek között */
+}
+
+.hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Átmenet, hogy ne ugráljon a kép */
+}
+
+.product:hover .default-image {
+    opacity: 0; /* Amikor a kurzor fölé viszik, elrejti az alapértelmezett képet */
+}
+
+.product:hover .hover-image {
+    opacity: 1; /* Amikor a kurzor fölé viszik, megjeleníti a modell képet */
+}
+
+
+.ads-section {
+    margin-top: 50px;
+    padding: 20px;
+    padding-top: 30px; /* Ha szükséges a megfelelő távolság biztosításához */
+    width: 100%;
+    max-width: 100vw;
+    text-align: center;
+    margin-bottom: 50px; /* Hozzáadjuk a margót az ads section aljához */
+}
+
+.ads-title {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.toggle-btn {
+    background-color: #ff4500;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.toggle-btn:hover {
+    background-color: #cc3700;
+    transform: scale(1.05);
+}
+
+.toggle-btn.open {
+    background-color: #333;
+}
+
+/* Alapértelmezetten a képek és szövegek rejtve maradnak */
+.ad-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    opacity: 0; /* Alapértelmezetten rejtve */
+    max-height: 0; /* Alapértelmezetten rejtve */
+    transition: opacity 0.3s ease, max-height 0.5s ease-in-out; /* Animálás */
+}
+
+/* Ha aktív, akkor megjelenik */
+.ad-container.active {
+    opacity: 1;
+    max-height: 500px; /* Magasságot beállítjuk, hogy ne legyen túl kicsi */
+}
+
+.ad {
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.ad img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.ad:hover img {
+    transform: scale(1.05);
+}
+
+.ad-text {
+    text-align: center; /* A szöveg középre igazítása */
+    padding: 20px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.6); /* Átlátszó háttér a szövegnek */
+    border-radius: 10px;
+    position: absolute;
+    bottom: -30px; /* Kicsit lejjebb helyezzük el, hogy ne takarja a képet */
+    left: 0;
+    right: 0;
+    transition: bottom 0.3s ease, opacity 0.3s ease;
+    opacity: 0; /* Alapértelmezetten rejtve */
+}
+
+.ad:hover .ad-text {
+    bottom: 0; /* A szöveg a képre feljön hoverre */
+    opacity: 1; /* A szöveg láthatóvá válik */
+}
+
+.ad-text h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    color: #ff4500; /* Cím színe (narancssárga) */
+}
+
+.ad-text p {
+    font-size: 20px;
+    margin: 10px 0 15px;
+    color: #ffd700; /* Leírás színe (arany) */
+}
+
+.shop-now-btn {
+    display: inline-block;
+    background-color: #ff4500;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+/* Fejléc és felirat stílusa */
+.ads-header h2 {
+    font-size: 48px; /* Nagyobb betűméret a kiemelkedéshez */
+    font-weight: bold;
+    color: #ff4500; /* Erőteljes narancssárga szín */
+    text-align: center;
+    text-transform: uppercase; /* Nagybetűs szöveg */
+    letter-spacing: 3px; /* Nagyobb térköz a betűk között */
+    margin-bottom: 30px; /* Több hely a gomb és a szöveg között */
+    position: relative; /* Pozicionálás a szöveg díszítéséhez */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 69, 0, 0.7); /* Árnyékolás, hogy a szöveg kiemelkedjen */
+}
+
+/* Színes szöveg és animációk */
+.ads-header h2::before {
+    content: ""; /* Hozzáadunk egy díszítő elemet a szöveg alá */
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #ff4500, #ffd700, #ff4500); /* Színátmenetes csík */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.6); /* Fényes hatás */
+}
+
+/* Ha a gombot is kiemeljük */
+.show-ads-btn {
+    display: inline-block;
+    background-color: #ff4500;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px; /* Lekerekített gomb */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.6); /* Fényes hatás */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.show-ads-btn:hover {
+    background-color: #cc3700;
+    transform: scale(1.05); /* Egy kis méretnövelés hover hatásra */
+}
+.marketing-section {
+    padding-bottom: 30px; /* Hozzáadott padding, hogy legyen egy kis hely a vonal után */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    margin-top: 0; /* Eltávolítjuk a margin-t a felső részről */
+    background-color: #f7f7f7; /* Háttérszín */
+    opacity: 0; /* Kezdetben rejtve van */
+    transform: translateY(50px); /* Lejjebb kezdődik */
+    transition: opacity 1s ease, transform 1s ease; /* Animáció */
+    margin-bottom: 50px; /* Ezzel növelhetjük a távolságot a következő szekcióig */
+    border-bottom: 3px solid #333; /* Hozzáadjuk az alsó vonalat */
+}
+
+/* A marketing szöveg és kép a flexbox segítségével */
+.marketing-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.marketing-text {
+    width: 50%; /* A szöveg szélességét beállítjuk, hogy elférjen a képpel */
+    color: #333; /* Szöveg szín */
+    text-align: left; /* Balra igazított szöveg */
+    flex: 1;
+    padding-right: 20px;
+    white-space: normal; /* A szöveg normál tördelése */
+    overflow: hidden; /* Ha a szöveg túl hosszú, ne lépje túl a keretet */
+    text-overflow: ellipsis; /* Hátralévő szöveg jelzése három ponttal */
+}
+
+
+.marketing-text h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ff4500; /* Kiemelt szín */
+}
+
+.marketing-text p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.shop-now-m-btn:hover {
+    background-color: #cc3700;
+    transform: scale(1.1);
+}
+
+/* Marketing kép */
+.marketing-image {
+    width: 45%;
+}
+
+.marketing-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+/* Animáció, amikor a szekció aktív */
+.marketing-section.visible {
+    opacity: 1;
+    transform: translateY(0); /* Normál pozícióba kerül */
+}
+
+/* Kép animáció */
+.marketing-image img.visible {
+    transform: scale(1.05); /* Kis méretnövelés a megjelenéskor */
+}
+.section-divider {
+    height: 3px; /* Vastag vonal */
+    background-color: #ff4500; /* Szín */
+    margin: 40px 0; /* Növeljük a távolságot, hogy ne legyen túl közel */
+}
+
+
+
+
+
+
+
+/* Shop Now gomb */
+.shop-now-m-btn {
+    display: inline-block;
+    background-color: #ff4500;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 400px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Extended marketing szekció tartalom */
+.extended-marketing-content {
+    display: flex;
+    width: 80%;
+    max-width: 1200px; /* Maximum szélesség */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Extended marketing szekció */
+.extended-marketing-section {
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: flex-start; /* A tartalom balra igazítása */
+    align-items: center; /* Kép és szöveg középen igazítva */
+    padding: 50px;
+    margin-top: 0;
+    background-color: #fff;
+    opacity: 0; /* Kezdetben rejtve */
+    transform: translateY(50px); /* Kezdetben lejjebb */
+    transition: opacity 1s ease, transform 1s ease;
+    margin-bottom: 50px;
+    border-bottom: 3px solid #333;
+}
+
+/* Kép a bal oldalon */
+.extended-marketing-image {
+    width: 50%; /* A kép szélességét nagyobbra vesszük */
+    opacity: 0; /* Kezdetben rejtve */
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+    margin-right: 20px; /* Kép és szöveg közötti távolság */
+}
+
+/* Szöveg a jobb oldalon */
+.extended-marketing-text {
+    width: 45%; /* A szöveg szélessége kisebb lesz, mint a kép */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; /* A szöveget balra igazítjuk */
+    height: 100%;
+    text-align: left; /* A szövegeket balra igazítjuk */
+}
+
+/* Cím (h2) */
+.extended-marketing-text h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ff4500;
+    line-height: 1.6;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Törzsszöveg (p) */
+.extended-marketing-text p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 500px; /* A szöveg ne foglaljon el túl sok helyet */
+}
+.shop-now-em-btn {
+    display: inline-block;
+    background-color: #ff4500;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: auto; /* A gomb a szöveg aljára kerül */
+    margin-bottom: 10px; /* Néhány px távolság a szöveg aljától */
+    align-self: center; /* A gomb középre igazítása */
+    margin-left: 10px; /* Balra tolás a gombnak */
+    margin-right: 100px;
+}
+/* Gomb hover effektus */
+.shop-now-em-btn:hover {
+    background-color: #cc3700;
+    transform: scale(1.1);
+}
+
+/* Kép animáció */
+.extended-marketing-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+/* Animáció, amikor a szekció aktív */
+.extended-marketing-section.visible .extended-marketing-image {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animáció, amikor a szekció aktív */
+.extended-marketing-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* A legalsó linkek stílusa */
+.bottom-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    margin-top: 20px;
+}
+
+.bottom-link a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.bottom-link a:hover {
+    background-color: #f0f0f0;
+}
+
+.bottom-link i {
+    margin-right: 8px;
+}
+
+.bottom-link a.signup-btn {
+    color: #4CAF50;
+}
+
+.bottom-link a.shop-btn {
+    color: #2196F3;
+}
+
+.bottom-link a.back-to-top-btn {
+    color: #9c27b0;
+}
+
+
+
+footer .footer-content {
+    display: flex;
+    flex-direction: column; /* Vertikális elrendezés */
+    align-items: center; /* Középre igazítás */
+}
+
+footer .terms-link {
+    color: #ff9800;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+footer .terms-link:hover {
+    text-decoration: underline;
+}
+
+.suggested-products {
+    margin-top: 200px; /* Nagyobb távolság a fő terméktől */
+    margin-bottom: 80px; /* Nagyobb távolság a footer előtt */
+}
+
+.suggested-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+    scrollbar-width: thin;
+}
+
+.suggested-slider {
+    display: flex;
+    gap: 20px;
+}
+
+.suggested-card {
+    flex: 0 0 calc(30% - 20px);
+    max-width: calc(30% - 20px);
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    width: 280px; /* Növelheted tovább, ha még nagyobb kell */
+    height: auto; /* Automatikusan igazodik */
+}
+
+.suggested-card:hover {
+    transform: scale(1.05);
+}
+
+.suggested-card img {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+    background-color: #f9f9f9; /* Háttérszín, ha a kép nem tölti ki a teret */
+}
+
+.suggested-card h3 {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.suggested-card .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.suggested-products h2 {
+    text-align: left;  /* Balra igazítva */
+    font-size: 24px;  /* Nagyobb, hogy jobban kiemelkedjen */
+    font-weight: bold;
+    font-size: 28px; /* Nagyobb betűméret */
+    font-weight: bold; /* Félkövér */
+    color: #333; /* Sötétszürke szín, de cserélhető */
+    text-transform: uppercase; /* Nagybetűs stílus */
+    letter-spacing: 1.5px; /* Kicsit nagyobb betűköz */
+    margin-bottom: 15px; /* Távolság a termékektől */
+    border-left: 5px solid #ff6600; /* Színes baloldali vonal */
+    padding-left: 12px; /* Kis térköz a vonaltól */
 }
