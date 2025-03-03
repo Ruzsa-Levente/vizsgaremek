@@ -75,7 +75,7 @@
         <div class="product-grid">
             <?php
             // Termékek lekérdezése az adatbázisból
-            $sql = "SELECT azon, nev, ar FROM termekek";
+            $sql = "SELECT azon, nev, ar FROM termekek WHERE keszlet > 0";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
