@@ -27,6 +27,7 @@ CREATE TABLE rendelesek (
     vasarlo_azon INT NOT NULL,
     datum DATE NOT NULL,
     osszesen INT NOT NULL,
+    status ENUM('pending', 'fulfilled') NOT NULL DEFAULT 'pending',
     FOREIGN KEY (vasarlo_azon) REFERENCES vasarlok(azon)
 );
 
@@ -46,4 +47,3 @@ CREATE TABLE felhasznalok (
     jelszo VARCHAR(255) NOT NULL,
     jogosultsag ENUM('user', 'admin', 'superadmin') NOT NULL DEFAULT 'user'
 );
-
