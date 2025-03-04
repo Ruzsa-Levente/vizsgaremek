@@ -261,3 +261,47 @@ orderDetails.cartItems.forEach(item => {
         }
     }
 });
+// A gomb kattintás esemény
+document.querySelector(".show-ads-btn").addEventListener("click", function() {
+    const adContainer = document.querySelector(".ad-container");
+    adContainer.classList.toggle("active"); // Toggle aktiválja vagy deaktiválja az animációt
+});
+
+
+// A szekciók animációjának aktiválása görgetéskor
+window.addEventListener('scroll', function() {
+    // Marketing és extended szekciók
+    var sections = document.querySelectorAll('.marketing-section, .extended-marketing-section');
+    
+    sections.forEach(function(section) {
+        var position = section.getBoundingClientRect().top;
+        var windowHeight = window.innerHeight;
+
+        // Ha a szekció a képernyőn van, hozzáadjuk a 'visible' osztályt
+        if (position < windowHeight) {
+            section.classList.add('visible');
+        }
+    });
+});
+
+    // Amikor a felhasználó rákattint a nyílra, az oldal tetejére görget
+    document.querySelector('.back-to-top').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    function scrollSuggestedLeft() {
+        document.querySelector(".suggested-slider").scrollBy({ left: -220, behavior: "smooth" });
+    }
+    
+    function scrollSuggestedRight() {
+        document.querySelector(".suggested-slider").scrollBy({ left: 220, behavior: "smooth" });
+    }
+    
+    // Kosár oldalsáv megnyitása/zárása
+function toggleCart() {
+    document.getElementById('cart-sidebar').classList.toggle('active');
+}
