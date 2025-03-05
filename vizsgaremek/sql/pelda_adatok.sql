@@ -5,7 +5,7 @@ VALUES
 ('Crimson, logós pulóver', 'Meleg és puha crimson pulóver, tökéletes hűvös időre.', 'pulóver', 12000, 50),
 ('Piros, logós póló', 'Sportos és kényelmes piros póló, mindennapi viseletre.', 'póló', 5000, 100),
 ('Zöld, logós pulóver', 'Letisztult zöld pulóver, amely kényelmes és divatos viselet.', 'pulóver', 12000, 50),
-('Szürke, logós top', 'Stílusos szürke top, könnyű és légáteresztő anyagból.', 'top', 7000, 80);
+('Szürke, logós top', 'Stílusos szürke top, könnyű és légáteresztő anyagból.', 'top', 7000, 80),
 ('Kék, logós pulóver', 'Stílusos kék pulóver, puha és kényelmes anyagból, ideális választás a hétköznapokra.', 'pulóver', 12000, 50),
 ('Bordó, kapucnis pulóver', 'Meleg és praktikus bordó kapucnis pulóver, tökéletes hideg napokra.', 'pulóver', 13000, 40),
 ('Fekete, kapucnis pulóver', 'Kényelmes fekete kapucnis pulóver, amely tökéletes választás mindennapi viseletre.', 'pulóver', 13000, 60),
