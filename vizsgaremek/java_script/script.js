@@ -223,12 +223,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Megjeleníti a rendelési tételeket
         // Megjeleníti a rendelési tételeket a fizetési oldalon mennyiséggel együtt
-const orderItems = document.getElementById("order-items");
-orderDetails.cartItems.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = `${item.name} (x${item.quantity}) - Total: Ft${item.price.toFixed(2)}`;
-    orderItems.appendChild(li);
-});
+        const orderItems = document.getElementById("order-items");
+        orderDetails.cartItems.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${item.name} (x${item.quantity}) - Total: Ft${item.price.toFixed(2)}`;
+            orderItems.appendChild(li);
+        });
 
         document.getElementById("order-total").textContent = `Total: Ft${orderDetails.total}`;
         const deliveryMethod = orderDetails.delivery === "home" ? "Home Delivery" : "In-Store Pickup";
@@ -238,28 +238,53 @@ orderDetails.cartItems.forEach(item => {
         if (orderDetails.delivery === "home") {
             document.getElementById("delivery-form").style.display = "block";
         }
+    }
+});
 
-        if (payNowBtn) {
-            payNowBtn.addEventListener("click", function () {
-                if (orderDetails.delivery === "home") {
-                    // Ellenőrizzük, hogy minden mező ki van-e töltve
-                    const name = document.getElementById("name").value.trim();
-                    const address = document.getElementById("address").value.trim();
-                    const city = document.getElementById("city").value.trim();
-                    const zip = document.getElementById("zip").value.trim();
-                    const phone = document.getElementById("phone").value.trim();
+// Az alábbi kódot a fizetési folyamat végén kell használni
 
-                    if (!name || !address || !city || !zip || !phone) {
-                        alert("Please fill in all shipping details before proceeding!");
-                        return;
-                    }
-                }
+document.getElementById("pay-now-btn").addEventListener("click", function (event) {
+    const orderDetails = JSON.parse(localStorage.getItem("orderDetails"));
+    if (!orderDetails || orderDetails.cartItems.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
 
-                alert("Redirecting to payment gateway...");
-                window.location.href = "payment_gateway.php"; // Itt mehet egy igazi fizetési oldalra
-            });
+    // Ellenőrizzük, hogy a szállítási mezők ki vannak-e töltve
+    if (orderDetails.delivery === "home") {
+        const name = document.getElementById("name").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const city = document.getElementById("city").value.trim();
+        const zip = document.getElementById("zip").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+    
+        if (!name || !address || !city || !zip || !phone) {
+            alert("Please fill in all shipping details before proceeding!");
+            event.preventDefault();  // Megakadályozza az űrlap elküldését
+            return;  // Ha bármelyik mező üres, leállítjuk a folyamatot
         }
     }
+
+    // Ha minden rendben, kérjük el az adatokat
+    fetch("php/process_payment.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(orderDetails)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert("Payment successful! Redirecting...");
+            localStorage.removeItem("cart"); // Kosár törlése
+            localStorage.removeItem("orderDetails");
+            window.location.href = "succes.php"; // Átirányítás megerősítő oldalra
+        } else {
+            alert("Error: " + data.message);
+        }
+    })
+    .catch(error => console.error("Error:", error));
 });
 // A gomb kattintás esemény
 document.querySelector(".show-ads-btn").addEventListener("click", function() {
