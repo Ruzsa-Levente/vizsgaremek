@@ -6,3 +6,4 @@ figyeljunk arra hogy a phpmyadmin felhasznalonevunk root legyen jelszo nelkul.
 Ha mindez megvan akkor mar csak futtatnunk kell a kodot.
 
 A fájlok onedrive linkje: https://1drv.ms/f/s!AmG9r8FmS_TxadYgwJtun6GHpgo?e=M7vAGi
+A webshop linkje: heetclothing.hu
