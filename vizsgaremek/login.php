@@ -20,17 +20,23 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
 <body class="reptile-bg">
 
 <header>
-<div class="nav-container">
-<div class="logo" onclick="window.location.href='index.php'">
-    <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
-    </div>
+    <div class="nav-container">
+        <div class="logo" onclick="window.location.href='index.php'">
+            <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
+        </div>
         <nav>
-            <a href="index.php" >Home</a>
-              <a href="clothes.php">Clothes</a>
+            <a href="index.php " >Home</a>
+            <a href="clothes.php" >Clothes</a>
             <a href="signup.php">Sign Up</a>
             <a href="about.php">About Us</a>
         </nav>
-        <div class="nav-icons">
+    </div>
+    <!-- Kereső ikon és kereső mező -->
+<div class="search-container">
+    <i class="fas fa-search" onclick="toggleSearch()"></i>
+    <input type="text" id="search-input" placeholder="Search..." onblur="hideSearch()" value="<?= htmlspecialchars($searchTerm ?? '') ?>">
+</div>
+    
     <!-- Kosár ikon -->
     <div class="cart-icon">
         <a href="billing.php">
@@ -45,9 +51,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
             <i class="fas fa-user"></i>
         </a>
     </div>
-</div>
-    </div>
-    </header>
+</header>
 
 <main>
     <section class="login-section">
