@@ -1,4 +1,14 @@
-/* General Styles */
+/* Merged style.css, style2.css, and updated search icon styles */
+
+/* Root Variables from style2.css */
+:root {
+    --primary-color: #c89666;
+    --text-color: #333333;
+    --background-color: #f5f5f7;
+    --card-background: #ffffff;
+}
+
+/* General Styles from style.css */
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +20,7 @@ html {
     scroll-behavior: smooth;
     height: 100%;
     margin: 0;
-  }
+}
 
 body {
     background-color: #f5f5f5;
@@ -18,73 +28,53 @@ body {
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    min-height: 100%; /* Ensures body takes up at least the full height of the screen */
-}
-a {
-    text-decoration: none;
-    color: #c89666; 
+    min-height: 100%;
 }
 
-/* Header Styles */
+a {
+    text-decoration: none;
+    color: #c89666;
+}
+
+/* Header Styles from style.css */
 header {
     position: sticky;
     display: flex;
-    justify-content: center; /* Középre igazítja az összes elemet */
+    justify-content: center;
     align-items: center;
-    text-align: center; 
-    top: 0;           
-    z-index: 1000;  
+    text-align: center;
+    top: 0;
+    z-index: 1000;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background: #050505;
     color: white;
 }
 
 .nav-container {
     display: flex;
-    flex-direction: column; /* Az elemek függőlegesen lesznek, mivel a logo fent van */
-    align-items: center; /* Középre igazítja a logo-t és a linkeket */
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Aktív menüpont jelölése */
 nav a.current-page {
-    border-bottom: 3px solid #c89666; /* Sárga aláhúzás */
-    padding-bottom: 5px; /* Kicsit lentebb tolja a szöveget */
+    border-bottom: 3px solid #c89666;
+    padding-bottom: 5px;
 }
 
 .logo img {
-    height: 70px; /* Adjust height as needed */
-    width: auto; /* Maintain aspect ratio */
-
+    height: 70px;
+    width: auto;
 }
 
 nav {
-    display: flex; /* A linkek egymás mellett lesznek */
-    flex-direction: row; /* Linkek vízszintes elrendezése */
-    justify-content: center; /* A linkek középre igazítása */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 nav a {
     color: white;
-    text-decoration: none;
-    margin: 0 15px; /* Távolság a linkek között */
-    font-size: 16px;
-    text-transform: uppercase;
-}
-
-nav a:hover {
-    color: #e1b382;
-}
-
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
     margin: 0 15px;
     font-size: 16px;
     text-transform: uppercase;
@@ -92,6 +82,11 @@ nav a {
 
 nav a:hover {
     color: #e1b382;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 h2, h3, h4 {
@@ -99,65 +94,85 @@ h2, h3, h4 {
     color: #c89666;
 }
 
-
-
-.cart-icon, .user-icon {
+/* Header Icons (Updated) */
+.cart-icon, .user-icon, .search-container {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.cart-icon {
-    right: 20px; /* Distance from the right edge */
-    margin-right: 45px; /* Space between the cart icon and user icon */
-    
+.user-icon {
+    right: 20px;
 }
 
-.user-icon {
-    right: 0; /* Position the user icon to the right */
-    margin-right: 30px;
+.cart-icon {
+    right: 60px;
+}
+
+.search-container {
+    right: 130px;
+    display: flex;
+    align-items: center;
+}
+
+.search-container i {
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.search-container i:hover {
+    color: #c89666;
+}
+
+.search-container input {
+    display: none;
+    width: 0;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: white;
+    transition: width 0.3s ease;
+    margin-left: 10px;
+}
+
+.search-container.active input {
+    display: block;
+    width: 150px;
 }
 
 .cart-icon a, .user-icon a {
-    color: white; /* Yellow cart icon */
-    font-size: 1.5rem; /* Adjust icon size */
+    color: white;
+    font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 
 .cart-icon a:hover, .user-icon a:hover {
-    color: #c89666; /* Highlighted color on hover */
+    color: #c89666;
 }
-
-
-
-
 
 header h1 {
     color: #000000;
 }
-nav a {
-    margin: 0 15px;
-    color: #fff;
-}
-nav a:hover {
-    color: #e1b382;
-}
+
 main {
     padding: 20px;
 }
 
-/*reptile bg*/
-.reptile-bg{
+/* Backgrounds from style.css */
+.reptile-bg {
     background-image: url("../kepek/deskopt_reptile.png");
 }
 
-/*hexa bg*/
-.hexa-bg{
+.hexa-bg {
     background-image: url("../kepek/deskopt_hexa.jpg");
     background-size: cover;
 }
 
-/* Hero Section */
+/* Hero Section from style.css */
 .hero {
     display: flex;
     align-items: center;
@@ -173,36 +188,25 @@ main {
     font-size: 50px;
     font-weight: bold;
     margin: 0;
-    color: white; /* Fekete szín */
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6); /* Fehér árnyék, hogy kiemelje */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
 }
 
 .hero-content p {
     font-size: 20px;
     margin: 10px 0 20px;
-    color: white; /* Fekete szín */
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6); /* Finom fehér árnyék */
-}
-.shop-now-btn {
-    padding: 10px 20px;
-    background-color: #f04d23; /* Szín lehet bármi */
     color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    font-size: 1.2em;
-    transition: background-color 0.3s;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
 }
 
-
-
-/*Slider section*/
-
+/* Slider Section from style.css */
 .slider-section {
     width: 100%;
     max-width: 1200px;
     margin: 20px auto;
     overflow: hidden;
 }
+
 .swiper {
     width: 100%;
     max-width: 1200px;
@@ -219,29 +223,27 @@ main {
     width: 100%;
     height: 100%;
     max-height: 400px;
-    object-fit: contain; /* Megőrzi az arányokat */
+    object-fit: contain;
 }
 
-/* Swiper Navigation Buttons */
 .swiper-button-prev, .swiper-button-next {
-    color: #c89666 !important; 
+    color: #c89666 !important;
 }
 
-/* Swiper Pagination Dots */
 .swiper-pagination-bullet {
-    background: #c89666 !important; 
+    background: #c89666 !important;
 }
 
 #signup-text {
-    font-size: 2rem; /* Increase font size */
-    padding: 20px 0; /* Add padding above and below */
-    text-align: center; /* Make sure the text is centered */
-    margin-top: 10px; /* Optional: adds space from the top of the page */
-    color: #c89666; /* Optional: gives the text a yellow color */
-    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6), 0px 0px 15px rgba(0, 0, 0, 0.7); 
+    font-size: 2rem;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 10px;
+    color: #c89666;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6), 0px 0px 15px rgba(0, 0, 0, 0.7);
 }
 
-/*Product page image swiper*/
+/* Product Slider from style.css */
 .product-slider {
     position: relative;
     max-width: 500px;
@@ -288,19 +290,16 @@ button.prev:hover, button.next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-
-/* Signup */
-
+/* Signup from style.css */
 .signup {
-    padding: 20px; /* Slight padding inside the form */
+    padding: 20px;
     border-radius: 8px;
     width: 100%;
     max-width: 400px;
     text-align: center;
-    margin: 30px auto; /* Added a little vertical margin for balance */
+    margin: 30px auto;
 }
 
-/* Form input styling */
 .signup input {
     width: 100%;
     padding: 10px;
@@ -308,32 +307,33 @@ button.prev:hover, button.next:hover {
     font-size: 16px;
 }
 
-/* Product Grid */
+/* Product Grid from style.css */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 40px;
 }
+
 .product {
     background: white;
     padding: 20px;
     text-align: center;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Adjusted shadow blur and spread */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
     transition: 0.3s;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%; /* Az elem magasságának beállítása, hogy a gombok egy szinten legyenek */
-    border-radius: 10px;     
-    margin: 20px auto;     
+    height: 100%;
+    border-radius: 10px;
+    margin: 20px auto;
 }
 
 .product img {
-    width: 300px; 
-    height: 300px; /* A képek magasságának egységesítése */
-    object-fit: contain; 
-    border-radius: 5px;  
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 5px;
     margin-bottom: 10px;
 }
 
@@ -341,16 +341,110 @@ button.prev:hover, button.next:hover {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: black; /* Fekete szín */
+    color: black;
 }
 
 .product h3 {
     font-size: 18px;
     margin: 10px 0;
-    color: black; /* Fekete szín */
+    color: black;
 }
 
-/*Product styles on product page*/
+/* Product Card from style2.css */
+.cont {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 500px;
+}
+
+.product-card {
+    background-color: var(--card-background);
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 350px;
+    border: 2px solid #e0e0e0;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+    border-color: var(--primary-color);
+}
+
+.product-card__image {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.product-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-card__image img {
+    transform: scale(1.05);
+}
+
+.product-card__info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
+}
+
+.product-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.product-card__description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.product-card__price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-card__price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.product-card__btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product-card__btn:hover {
+    background-color: #e1b382;
+}
+
+/* Product Detail from style.css */
 .product-detail {
     display: flex;
     justify-content: space-between;
@@ -396,15 +490,15 @@ button.prev:hover, button.next:hover {
 .product-gallery {
     flex: 1;
     display: flex;
-    justify-content: center;  /* Kép középre igazítása */
+    justify-content: center;
     align-items: center;
-    max-width: 500px;  /* A képek szélessége */
+    max-width: 500px;
 }
 
 .product-gallery img {
-    width: 100%;  /* A kép szélességét a konténerhez igazítja */
-    height: auto;  /* A magasság automatikusan illeszkedik */
-    object-fit: contain;  /* Az arányokat megtartja */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .product-info {
@@ -414,7 +508,7 @@ button.prev:hover, button.next:hover {
     max-width: 600px;
 }
 
-/*Buttons*/
+/* Buttons from style.css */
 button {
     background: #111;
     color: white;
@@ -437,7 +531,7 @@ button:hover {
     font-size: 16px;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
-    margin-top: 15px; 
+    margin-top: 15px;
 }
 
 .buy-btn:hover {
@@ -458,6 +552,7 @@ button:hover {
 .shop-now-btn:hover {
     background: #e1b382;
 }
+
 .remove-btn {
     font-size: 14px;
     display: inline-block;
@@ -474,19 +569,18 @@ button:hover {
     background-color: #e60000;
 }
 
-
-
-
-/* Sign Up Form */
+/* Form Styles from style.css */
 form {
     background: #333;
     padding: 20px;
     border-radius: 8px;
 }
+
 form label {
     display: block;
     margin-top: 10px;
 }
+
 form input {
     width: 100%;
     padding: 10px;
@@ -494,6 +588,7 @@ form input {
     border-radius: 5px;
     border: none;
 }
+
 form button {
     margin-top: 10px;
     padding: 10px;
@@ -504,25 +599,25 @@ form button {
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
 }
+
 form button:hover {
     background: #e1b382;
     transform: scale(1.05);
 }
 
-/* Footer */
+/* Footer from style.css */
 footer {
-    margin-top: auto;  /* Pushes footer to the bottom */
+    margin-top: auto;
     text-align: center;
     background: #050505;
     color: white;
     padding: 20px;
 }
 
-
-
+/* About Section from style.css */
 #about {
-    max-width: 900px; 
-    margin: 50px auto; 
+    max-width: 900px;
+    margin: 50px auto;
     padding: 30px;
     background-color: #333;
     border-radius: 10px;
@@ -576,29 +671,7 @@ footer {
     margin: 20px 0;
 }
 
-@media (max-width: 768px) {
-    #about {
-        padding: 20px;
-    }
-
-    #about h2 {
-        font-size: 2.2rem;
-    }
-
-    #about h3 {
-        font-size: 1.6rem;
-    }
-
-    #about p {
-        font-size: 1rem;
-        max-width: 100%;
-    }
-    .cart-icon a, .user-icon a {
-        font-size: 1.2rem;
-    }
-}
-
-/* Payment Section */
+/* Payment Section from style.css */
 #payment {
     width: 80%;
     max-width: 600px;
@@ -607,12 +680,6 @@ footer {
     padding: 20px;
     border-radius: 8px;
     color: white;
-    
-}
-
-h2, h3 {
-    text-align: center;
-    color: #c89666;
 }
 
 #order-summary {
@@ -632,7 +699,6 @@ h2, h3 {
     border-bottom: 1px solid #555;
 }
 
-/* Shipping Information */
 #delivery-form {
     background: #333;
     padding: 15px;
@@ -656,7 +722,6 @@ input {
     color: #fff;
 }
 
-/* Payment Button */
 #pay-now-btn {
     display: block;
     width: 100%;
@@ -676,7 +741,7 @@ input {
     transform: scale(1.05);
 }
 
-/* Login Section */
+/* Login Section from style.css */
 .login-section {
     display: flex;
     justify-content: center;
@@ -691,11 +756,6 @@ input {
     border-radius: 10px;
     width: 350px;
     text-align: center;
-}
-
-h2 {
-    margin-bottom: 20px;
-    color: #c89666;
 }
 
 .form-group {
@@ -750,7 +810,7 @@ input[type="submit"]:hover {
     text-decoration: underline;
 }
 
-/* Billing Section */
+/* Billing Section from style.css */
 #billing {
     width: 80%;
     max-width: 600px;
@@ -759,10 +819,7 @@ input[type="submit"]:hover {
     padding: 20px;
     border-radius: 8px;
     color: white;
-    
 }
-
-
 
 #receipt {
     background: #333;
@@ -787,7 +844,6 @@ input[type="submit"]:hover {
     text-align: center;
 }
 
-/* Delivery Options */
 #delivery-options {
     margin-top: 15px;
     padding: 10px;
@@ -805,7 +861,6 @@ select {
     color: #fff;
 }
 
-/* Place Order Button */
 #place-order-btn {
     display: block;
     width: 100%;
@@ -825,23 +880,15 @@ select {
     transform: scale(1.05);
 }
 
-.cart-item-image {
-    width: 50px;  /* Kisebb méretű képek */
-    height: 50px;
-    object-fit: cover;
-    border-radius: 5px;
+/* Cart Items from style.css */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
 }
-
-.cart-item-name {
-    flex-grow: 1; /* Hogy a név kitöltse a helyet */
-}
-
-.quantity-btn {
-    padding: 5px 10px;
-    font-size: 16px;
-    margin-left: 5px;
-}
-
 
 .cart-item-content {
     display: flex;
@@ -868,17 +915,7 @@ select {
 }
 
 .quantity-btn {
-    background-color: #ddd;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 0 5px;
-    border-radius: 5px;
-}
-
-.quantity-btn {
-    background-color: #c89666; /* Ugyanaz, mint a Place Order gomb */
+    background-color: #c89666;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
@@ -889,15 +926,8 @@ select {
 }
 
 .quantity-btn:hover {
-    background-color: #e1b382; /* Sötétebb kék hover állapot */
+    background-color: #e1b382;
 }
-
-
-.quantity-btn:hover {
-    background-color: #e1b382; /* Sötétebb kék hover állapot */
-}
-
-
 
 .quantity-display {
     font-size: 14px;
@@ -905,29 +935,13 @@ select {
     text-align: center;
 }
 
-.remove-btn {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-    margin-left: 10px;
-}
-
-.remove-btn:hover {
-    background-color: #cc0000;
-}
-
-/* Profile Section Styling */
+/* Profile Section from style.css */
 .profile-section {
     padding: 40px 20px;
     border-radius: 10px;
     margin: 20px auto;
-    max-width: 800px; /* Controls the width of the profile container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-container {
@@ -947,7 +961,7 @@ select {
 .profile-container p {
     font-size: 18px;
     margin-bottom: 15px;
-    color: white; /* Dark gray text for readability */
+    color: white;
 }
 
 .profile-container button {
@@ -961,7 +975,7 @@ select {
     transition: background 0.3s, transform 0.3s;
     display: block;
     width: 100%;
-    margin-top: 20px; /* Adds space before the logout button */
+    margin-top: 20px;
 }
 
 .profile-container button:hover {
@@ -971,8 +985,8 @@ select {
 
 .profile-container form {
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically, if needed */
+    justify-content: center;
+    align-items: center;
 }
 
 .profile-container form button {
@@ -991,9 +1005,7 @@ select {
     transform: scale(1.05);
 }
 
-
-/*admin user management section*/
-
+/* Admin User Management from style.css */
 .user-table {
     width: 100%;
     border-collapse: collapse;
@@ -1024,19 +1036,7 @@ select {
     cursor: pointer;
 }
 
-.back-button {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    background-color: #ff9800;
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-/*admin order managemnet section*/
-
+/* Admin Order Management from style.css */
 .order-table {
     width: 100%;
     border-collapse: collapse;
@@ -1060,10 +1060,6 @@ select {
     display: flex;
     justify-content: center;
     gap: 10px;
-}
-
-.inline-form {
-    display: inline-block;
 }
 
 .delete-button, .status-button, .view-button {
@@ -1102,755 +1098,169 @@ select {
     margin-right: auto;
 }
 
-/*manage products style*/
-.white{
-    color: white;
-}
-
-/* Modern style for the 'Proceed to Payment' button */
-#pay-now-btn {
-    background-color: #4CAF50; /* Green */
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%; /* Full width */
-    transition: all 0.3s ease;
-    margin-bottom: 10px; /* Space between buttons */
-}
-
-/* Hover effect for 'Proceed to Payment' */
-#pay-now-btn:hover {
-    background-color: #45a049;
-    transform: translateY(-2px);
-}
-
-#pay-now-btn:focus {
-    outline: none;
-}
-
-/* Modern style for the 'Back to Cart' button */
-#back-to-cart-btn {
-    background-color: #FF6F61; /* Modern color */
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    width: auto; /* Not full width */
-    transition: all 0.3s ease;
-    margin-top: 10px; /* Space between buttons */
-    margin-left: auto;
-    margin-right: auto; /* Center it */
-    display: block; /* Ensures it's a block-level element */
-}
-
-/* Hover effect for 'Back to Cart' */
-#back-to-cart-btn:hover {
-    background-color: #FF4B3E;
-    transform: translateY(-2px);
-}
-
-#back-to-cart-btn:focus {
-    outline: none;
-}
-
-
-/* Style for the search container to position it correctly */
-.search-container {
-    position: absolute;
-    top: 50%;  /* Vertically center the search container */
-    right: 130px;  /* Position it towards the right, adjust if needed */
-    transform: translateY(-50%); /* Center it vertically */
+/* Sorting Container from style2.css */
+.sorting-container {
     display: flex;
     align-items: center;
-    z-index: 1000;  /* Ensure it's on top */
-}
-
-/* Style for the search input */
-.search-container input[type="text"] {
-    display: none;
-    position: absolute;
-    padding: 5px 20px;
-    border: 2px solid #ccc;
-    border-radius: 30px;
-    font-size: 14px;
-    width: 200px;
-    transition: all 0.3s ease;
-    right: 35px;  /* Adjust this to position the input left of the icon */
-}
-
-/* When the input is focused or active, make it appear */
-.search-container.active input[type="text"] {
-    display: block;
-    width: 250px;  /* Adjust width of the text field */
-    right: 35px;   /* Adjust this to position the input left of the icon */
-}
-
-/* Style for the search icon */
-.search-container i {
-    font-size: 18px;
-    color: #fff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    margin-left: 0; /* Remove margin to align it with the input */
-}
-/* When the user hovers over the search icon */
-.search-container i:hover {
-    color: #f39c12; /* Példa: narancssárga szín */
-}
-.product {
-    position: relative;
-    overflow: hidden; /* Elrejti a modell képet alapértelmezetten */
-}
-
-.product-image {
-    position: relative;
-    width: 100%;
-}
-
-.default-image {
-    width: 100%;
-    transition: opacity 0.3s ease; /* Átmenet a képek között */
-}
-
-.hover-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease; /* Átmenet, hogy ne ugráljon a kép */
-}
-
-.product:hover .default-image {
-    opacity: 0; /* Amikor a kurzor fölé viszik, elrejti az alapértelmezett képet */
-}
-
-.product:hover .hover-image {
-    opacity: 1; /* Amikor a kurzor fölé viszik, megjeleníti a modell képet */
-}
-
-
-.ads-section {
-    margin-top: 50px;
-    padding: 20px;
-    padding-top: 30px; /* Ha szükséges a megfelelő távolság biztosításához */
-    width: 100%;
-    max-width: 100vw;
-    text-align: center;
-    margin-bottom: 50px; /* Hozzáadjuk a margót az ads section aljához */
-}
-
-.ads-title {
-    font-size: 48px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.toggle-btn {
-    background-color: #ff4500;
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-}
-
-.toggle-btn:hover {
-    background-color: #cc3700;
-    transform: scale(1.05);
-}
-
-.toggle-btn.open {
-    background-color: #333;
-}
-
-/* Alapértelmezetten a képek és szövegek rejtve maradnak */
-.ad-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px;
-    opacity: 0; /* Alapértelmezetten rejtve */
-    max-height: 0; /* Alapértelmezetten rejtve */
-    transition: opacity 0.3s ease, max-height 0.5s ease-in-out; /* Animálás */
-}
-
-/* Ha aktív, akkor megjelenik */
-.ad-container.active {
-    opacity: 1;
-    max-height: 500px; /* Magasságot beállítjuk, hogy ne legyen túl kicsi */
-}
-
-.ad {
-    position: relative;
-    width: 50%;
-    overflow: hidden;
-    border-radius: 15px;
-}
-
-.ad img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-}
-
-.ad:hover img {
-    transform: scale(1.05);
-}
-
-.ad-text {
-    text-align: center; /* A szöveg középre igazítása */
-    padding: 20px;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    background-color: rgba(0, 0, 0, 0.6); /* Átlátszó háttér a szövegnek */
-    border-radius: 10px;
-    position: absolute;
-    bottom: -30px; /* Kicsit lejjebb helyezzük el, hogy ne takarja a képet */
-    left: 0;
-    right: 0;
-    transition: bottom 0.3s ease, opacity 0.3s ease;
-    opacity: 0; /* Alapértelmezetten rejtve */
-}
-
-.ad:hover .ad-text {
-    bottom: 0; /* A szöveg a képre feljön hoverre */
-    opacity: 1; /* A szöveg láthatóvá válik */
-}
-
-.ad-text h2 {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 0;
-    color: #ff4500; /* Cím színe (narancssárga) */
-}
-
-.ad-text p {
-    font-size: 20px;
-    margin: 10px 0 15px;
-    color: #ffd700; /* Leírás színe (arany) */
-}
-
-.shop-now-btn {
-    display: inline-block;
-    background-color: #ff4500;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-
-/* Fejléc és felirat stílusa */
-.ads-header h2 {
-    font-size: 48px; /* Nagyobb betűméret a kiemelkedéshez */
-    font-weight: bold;
-    color: #ff4500; /* Erőteljes narancssárga szín */
-    text-align: center;
-    text-transform: uppercase; /* Nagybetűs szöveg */
-    letter-spacing: 3px; /* Nagyobb térköz a betűk között */
-    margin-bottom: 30px; /* Több hely a gomb és a szöveg között */
-    position: relative; /* Pozicionálás a szöveg díszítéséhez */
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 69, 0, 0.7); /* Árnyékolás, hogy a szöveg kiemelkedjen */
-}
-
-/* Színes szöveg és animációk */
-.ads-header h2::before {
-    content: ""; /* Hozzáadunk egy díszítő elemet a szöveg alá */
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, #ff4500, #ffd700, #ff4500); /* Színátmenetes csík */
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 69, 0, 0.6); /* Fényes hatás */
-}
-
-/* Ha a gombot is kiemeljük */
-.show-ads-btn {
-    display: inline-block;
-    background-color: #ff4500;
-    color: white;
-    padding: 12px 30px;
-    border-radius: 30px; /* Lekerekített gomb */
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 20px;
-    text-transform: uppercase;
-    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.6); /* Fényes hatás */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.show-ads-btn:hover {
-    background-color: #cc3700;
-    transform: scale(1.05); /* Egy kis méretnövelés hover hatásra */
-}
-.marketing-section {
-    padding-bottom: 30px; /* Hozzáadott padding, hogy legyen egy kis hely a vonal után */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
-    margin-top: 0; /* Eltávolítjuk a margin-t a felső részről */
-    background-color: #f7f7f7; /* Háttérszín */
-    opacity: 0; /* Kezdetben rejtve van */
-    transform: translateY(50px); /* Lejjebb kezdődik */
-    transition: opacity 1s ease, transform 1s ease; /* Animáció */
-    margin-bottom: 50px; /* Ezzel növelhetjük a távolságot a következő szekcióig */
-    border-bottom: 3px solid #333; /* Hozzáadjuk az alsó vonalat */
-}
-
-/* A marketing szöveg és kép a flexbox segítségével */
-.marketing-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.marketing-text {
-    width: 50%; /* A szöveg szélességét beállítjuk, hogy elférjen a képpel */
-    color: #333; /* Szöveg szín */
-    text-align: left; /* Balra igazított szöveg */
-    flex: 1;
-    padding-right: 20px;
-    white-space: normal; /* A szöveg normál tördelése */
-    overflow: hidden; /* Ha a szöveg túl hosszú, ne lépje túl a keretet */
-    text-overflow: ellipsis; /* Hátralévő szöveg jelzése három ponttal */
-}
-
-
-.marketing-text h2 {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #ff4500; /* Kiemelt szín */
-}
-
-.marketing-text p {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.shop-now-m-btn:hover {
-    background-color: #cc3700;
-    transform: scale(1.1);
-}
-
-/* Marketing kép */
-.marketing-image {
-    width: 45%;
-}
-
-.marketing-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.5s ease;
-}
-
-/* Animáció, amikor a szekció aktív */
-.marketing-section.visible {
-    opacity: 1;
-    transform: translateY(0); /* Normál pozícióba kerül */
-}
-
-/* Kép animáció */
-.marketing-image img.visible {
-    transform: scale(1.05); /* Kis méretnövelés a megjelenéskor */
-}
-.section-divider {
-    height: 3px; /* Vastag vonal */
-    background-color: #ff4500; /* Szín */
-    margin: 40px 0; /* Növeljük a távolságot, hogy ne legyen túl közel */
-}
-
-
-
-
-
-
-
-/* Shop Now gomb */
-.shop-now-m-btn {
-    display: inline-block;
-    background-color: #ff4500;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 18px;
-    margin-left: 400px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-/* Extended marketing szekció tartalom */
-.extended-marketing-content {
-    display: flex;
-    width: 80%;
-    max-width: 1200px; /* Maximum szélesség */
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Extended marketing szekció */
-.extended-marketing-section {
-    padding-bottom: 30px;
-    display: flex;
-    justify-content: flex-start; /* A tartalom balra igazítása */
-    align-items: center; /* Kép és szöveg középen igazítva */
-    padding: 50px;
-    margin-top: 0;
-    background-color: #fff;
-    opacity: 0; /* Kezdetben rejtve */
-    transform: translateY(50px); /* Kezdetben lejjebb */
-    transition: opacity 1s ease, transform 1s ease;
-    margin-bottom: 50px;
-    border-bottom: 3px solid #333;
-}
-
-/* Kép a bal oldalon */
-.extended-marketing-image {
-    width: 50%; /* A kép szélességét nagyobbra vesszük */
-    opacity: 0; /* Kezdetben rejtve */
-    transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
-    margin-right: 20px; /* Kép és szöveg közötti távolság */
-}
-
-/* Szöveg a jobb oldalon */
-.extended-marketing-text {
-    width: 45%; /* A szöveg szélessége kisebb lesz, mint a kép */
-    color: #333;
-    display: flex;
-    flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start; /* A szöveget balra igazítjuk */
-    height: 100%;
-    text-align: left; /* A szövegeket balra igazítjuk */
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin-left: 0;
+    margin-right: auto;
 }
 
-/* Cím (h2) */
-.extended-marketing-text h2 {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #ff4500;
-    line-height: 1.6;
-    margin-left: 0;
-    margin-right: 0;
+.sorting-container label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
 }
 
-/* Törzsszöveg (p) */
-.extended-marketing-text p {
-    font-size: 20px;
-    margin-bottom: 20px;
-    line-height: 1.6;
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 500px; /* A szöveg ne foglaljon el túl sok helyet */
+.sorting-container select {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 200px;
 }
-.shop-now-em-btn {
-    display: inline-block;
+
+.sorting-container select:focus {
+    border-color: #ff4500;
+    box-shadow: 0 0 5px rgba(255, 69, 0, 0.3);
+}
+
+.sorting-container select:hover {
+    border-color: #ff4500;
+}
+
+.sorting-container select option {
+    font-size: 14px;
+    padding: 8px 10px;
+    background-color: #fff;
+    color: #333;
+}
+
+.sorting-container select option:checked {
     background-color: #ff4500;
     color: white;
-    padding: 12px 24px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 18px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: auto; /* A gomb a szöveg aljára kerül */
-    margin-bottom: 10px; /* Néhány px távolság a szöveg aljától */
-    align-self: center; /* A gomb középre igazítása */
-    margin-left: 10px; /* Balra tolás a gombnak */
-    margin-right: 100px;
-}
-/* Gomb hover effektus */
-.shop-now-em-btn:hover {
-    background-color: #cc3700;
-    transform: scale(1.1);
-}
-
-/* Kép animáció */
-.extended-marketing-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.5s ease;
-}
-
-/* Animáció, amikor a szekció aktív */
-.extended-marketing-section.visible .extended-marketing-image {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Animáció, amikor a szekció aktív */
-.extended-marketing-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* A legalsó linkek stílusa */
-.bottom-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    background-color: #f8f8f8;
-    margin-top: 20px;
-}
-
-.bottom-link a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-.bottom-link a:hover {
-    background-color: #f0f0f0;
-}
-
-.bottom-link i {
-    margin-right: 8px;
-}
-
-.bottom-link a.signup-btn {
-    color: #4CAF50;
-}
-
-.bottom-link a.shop-btn {
-    color: #2196F3;
-}
-
-.bottom-link a.back-to-top-btn {
-    color: #9c27b0;
 }
 
 
-
-footer .footer-content {
-    display: flex;
-    flex-direction: column; /* Vertikális elrendezés */
-    align-items: center; /* Középre igazítás */
+/* Miscellaneous from style.css */
+.white {
+    color: white;
 }
 
-footer .terms-link {
-    color: #ff9800;
-    text-decoration: none;
-    font-size: 14px;
-    margin-top: 10px;
+/* Responsive Design */
+@media (max-width: 768px) {
+    #about {
+        padding: 20px;
+    }
+
+    #about h2 {
+        font-size: 2.2rem;
+    }
+
+    #about h3 {
+        font-size: 1.6rem;
+    }
+
+    #about p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .cart-icon a, .user-icon a, .search-container i {
+        font-size: 1.2rem;
+    }
+
+    .search-container {
+        right: 112px;
+    }
+
+    .cart-icon {
+        right: 50px;
+    }
+
+    .user-icon {
+        right: 15px;
+    }
+
+    .search-container.active input {
+        width: 120px;
+    }
 }
 
-footer .terms-link:hover {
-    text-decoration: underline;
+@media (max-width: 600px) {
+    .sorting-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .sorting-container select {
+        width: 100%;
+    }
 }
 
-.suggested-products {
-    margin-top: 200px; /* Nagyobb távolság a fő terméktől */
-    margin-bottom: 80px; /* Nagyobb távolság a footer előtt */
-}
+@media (max-width: 480px) {
+    .cont {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
 
-.suggested-scroll-container {
-    overflow-x: auto;
-    white-space: nowrap;
-    display: flex;
-    gap: 20px;
-    padding: 10px 0;
-    scrollbar-width: thin;
-}
+    .product-card {
+        border: none;
+    }
 
-.suggested-slider {
-    display: flex;
-    gap: 20px;
-}
+    .product-card__image {
+        height: 200px;
+    }
 
-.suggested-card {
-    flex: 0 0 calc(30% - 20px);
-    max-width: calc(30% - 20px);
-    background: #f9f9f9;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.2s ease-in-out;
-    width: 280px; /* Növelheted tovább, ha még nagyobb kell */
-    height: auto; /* Automatikusan igazodik */
-}
+    .product-card__title {
+        font-size: 1.3rem;
+    }
 
-.suggested-card:hover {
-    transform: scale(1.05);
-}
+    .product-card__description {
+        font-size: 0.8rem;
+    }
 
-.suggested-card img {
-    width: 100%;
-    height: 500px;
-    object-fit: contain;
-    border-radius: 10px;
-    background-color: #f9f9f9; /* Háttérszín, ha a kép nem tölti ki a teret */
-}
+    .product-card__price {
+        font-size: 1.1rem;
+    }
 
-.suggested-card h3 {
-    font-size: 1.1em;
-    margin: 10px 0;
-}
+    .product-card__btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
 
-.suggested-card .price {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #333;
-}
+    .search-container {
+        right: 70px;
+    }
 
-.suggested-products h2 {
-    text-align: left;  /* Balra igazítva */
-    font-size: 24px;  /* Nagyobb, hogy jobban kiemelkedjen */
-    font-weight: bold;
-    font-size: 28px; /* Nagyobb betűméret */
-    font-weight: bold; /* Félkövér */
-    color: #333; /* Sötétszürke szín, de cserélhető */
-    text-transform: uppercase; /* Nagybetűs stílus */
-    letter-spacing: 1.5px; /* Kicsit nagyobb betűköz */
-    margin-bottom: 15px; /* Távolság a termékektől */
-    border-left: 5px solid #ff6600; /* Színes baloldali vonal */
-    padding-left: 12px; /* Kis térköz a vonaltól */
-}
-.cart-sidebar {
-    position: fixed;
-    top: 0;
-    right: -450px;
-    width: 450px;
-    height: 100%;
-    background: #fff;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-    padding: 20px;
-    transition: right 0.3s ease-in-out;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+    .cart-icon {
+        right: 40px;
+    }
 
-.cart-sidebar.active {
-    right: 0;
-}
+    .user-icon {
+        right: 10px;
+    }
 
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
+    .cart-icon a, .user-icon a, .search-container i {
+        font-size: 1rem;
+    }
 
-.close-cart {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #333; /* Módosítottam, hogy ne legyen fehér */
-}
-
-.cart-items {
-    list-style: none;
-    padding: 0;
-    overflow-y: auto;
-    flex-grow: 1;
-    max-height: 70%;
-}
-
-.cart-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px;
-    text-align: center;
-    height: 160px;
-}
-
-.cart-item img {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 5px;
-}
-
-.cart-item .product-name {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    white-space: nowrap;
-}
-
-.cart-item .product-price {
-    font-size: 14px;
-    color: #333;
-    margin-top: 5px;
-}
-
-.cart-item .quantity-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 5px;
-}
-
-.cart-item .quantity-buttons button {
-    background: none;
-    border: 1px solid #333;
-    color: #333;
-    font-size: 16px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin: 0 5px;
-}
-
-.cart-item .remove-item {
-    font-size: 20px;
-    color: #333;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.cart-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.cart-btn, .checkout-btn {
-    display: block;
-    text-align: center;
-    background: #000;
-    color: #fff;
-    padding: 12px;
-    margin-top: 10px;
-    text-decoration: none;
-    width: 100%;
+    .search-container.active input {
+        width: 100px;
+    }
 }
