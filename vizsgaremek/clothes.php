@@ -29,7 +29,7 @@ if (isset($_GET['sort'])) {
 }
 
 // SQL lekérdezés a keresési kifejezés alapján
-$sql = "SELECT azon, nev, ar FROM termekek WHERE nev LIKE :searchTerm OR leiras LIKE :searchTerm $sort_order";
+$sql = "SELECT azon, nev, ar FROM termekek WHERE (nev LIKE :searchTerm OR leiras LIKE :searchTerm) AND keszlet > 0 $sort_order";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
 $stmt->execute();
@@ -42,7 +42,6 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Clothes - Heet Clothing</title>
 </head>
@@ -54,10 +53,10 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
         </div>
         <nav>
-            <a href="index.php" class="<?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'current-page' : '' ?>">Home</a>
-            <a href="clothes.php" class="<?= basename($_SERVER['PHP_SELF']) == 'clothes.php' ? 'current-page' : '' ?>">Clothes</a>
-            <a href="signup.php" class="<?= basename($_SERVER['PHP_SELF']) == 'signup.php' ? 'current-page' : '' ?>">Sign Up</a>
-            <a href="about.php" class="<?= basename($_SERVER['PHP_SELF']) == 'about.php' ? 'current-page' : '' ?>">About Us</a>
+            <a href="index.php " >Home</a>
+            <a href="clothes.php" class="current-page">Clothes</a>
+            <a href="signup.php">Sign Up</a>
+            <a href="about.php">About Us</a>
         </nav>
     </div>
     <!-- Kereső ikon és kereső mező -->
@@ -101,7 +100,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if (count($products) > 0):
         foreach ($products as $product):
             // A termék első képének lekérdezése
-            $sql = "SELECT kep_url FROM termek_kepek WHERE termek_azon = :id LIMIT 1";
+            $sql = "SELECT kep_url FROM termek_kepek WHERE termek_azon = :id LIMIT 1 ";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':id', $product['azon'], PDO::PARAM_INT);
             $stmt->execute();
@@ -137,7 +136,6 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </footer>
 
 <script src="java_script/script.js"></script>
-<script src="java_script/script2.js"></script>
 
 </body>
 </html>
