@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_product'])) {
         }
 
         $pdo->commit();
-        echo "Product updated successfully!";
+
     } catch (Exception $e) {
         $pdo->rollBack();
         echo "Error: " . $e->getMessage();
@@ -122,24 +122,31 @@ if (isset($_GET['delete_image_id'])) {
             <img src="kepek/heet-logo-white.png" alt="Webshop Logo">
         </div>
         <nav>
-            <a href="index.php">Home</a>
-            <a href="index.php#products">Clothes</a>
+            <a href="index.php " >Home</a>
+            <a href="clothes.php">Clothes</a>
             <a href="signup.php">Sign Up</a>
             <a href="about.php">About Us</a>
         </nav>
-        <div class="nav-icons">
-            <div class="cart-icon">
-                <a href="billing.php">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-count">0</span>
-                </a>
-            </div>
-            <div class="user-icon">
-                <a href="profile.php">
-                    <i class="fas fa-user"></i>
-                </a>
-            </div>
-        </div>
+    </div>
+    <!-- Kereső ikon és kereső mező -->
+<div class="search-container">
+    <i class="fas fa-search" onclick="toggleSearch()"></i>
+    <input type="text" id="search-input" placeholder="Search..." onblur="hideSearch()" value="<?= htmlspecialchars($searchTerm ?? '') ?>">
+</div>
+    
+    <!-- Kosár ikon -->
+    <div class="cart-icon">
+        <a href="billing.php">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </a>
+    </div>
+
+    <!-- Felhasználó ikon -->
+    <div class="user-icon">
+        <a href="login.php">
+            <i class="fas fa-user"></i>
+        </a>
     </div>
 </header>
 
