@@ -1264,3 +1264,59 @@ select {
         width: 100px;
     }
 }
+/* Termékkezelő oldal specifikus stílusok */
+.container-distance {
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.container-distance h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container-distance a button {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container-distance a button:hover {
+    background-color: #e65c00;
+}
+
+/* Táblázat stílus */
+.white {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.white th, .white td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.white th {
+    background-color: #444;
+    color: white;
+}
+
+.white tr:nth-child(even) {
+    background-color: #222;
+}
+
+.white a {
+    color: #ff6600;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.white a:hover {
+    text-decoration: underline;
+}
+
