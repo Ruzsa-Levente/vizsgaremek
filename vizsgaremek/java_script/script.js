@@ -208,19 +208,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Search bar enter key functionality
-    const searchInput = document.getElementById('search-input');
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                const searchTerm = this.value.trim();
-                if (searchTerm) {
-                    window.location.href = `clothes.php?search=${encodeURIComponent(searchTerm)}`;
-                }
-            }
-        });
-    }
-
     // Order summarizing process for billing.php
     const placeOrderBtn = document.getElementById("place-order-btn");
     if (placeOrderBtn) {
@@ -336,3 +323,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Scroll event listener for animations
 window.addEventListener('scroll', handleScrollAnimations);
+
+// Get elements
+const searchToggle = document.getElementById('search-toggle');
+const searchContainer = document.querySelector('.search-container');
+const searchInput = document.getElementById('search-input');
+
+// Toggle search input visibility
+searchToggle.addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent the click from immediately triggering the document listener
+    searchContainer.classList.toggle('active');
+    if (searchContainer.classList.contains('active')) {
+        searchInput.focus(); // Focus the input when it appears
+    }
+});
+
+// Handle search form submission
+searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault(); // Prevent form submission in some cases
+        const searchTerm = this.value.trim();
+        if (searchTerm) {
+            window.location.href = `clothes.php?search=${encodeURIComponent(searchTerm)}`;
+        }
+    }
+});
+
+
+// Close search when clicking outside
+document.addEventListener('click', function(event) {
+    if (!searchContainer.contains(event.target) && searchContainer.classList.contains('active')) {
+        searchContainer.classList.remove('active');
+    }
+});
+
+// Prevent clicks inside the search container from closing it
+searchContainer.addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+function scrollLeft() {
+    document.querySelector(".recommended-container").scrollBy({ left: -200, behavior: "smooth" });
+}
+
+function scrollRight() {
+    document.querySelector(".recommended-container").scrollBy({ left: 200, behavior: "smooth" });
+}
