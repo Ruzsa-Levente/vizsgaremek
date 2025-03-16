@@ -1,6 +1,6 @@
 /* Merged style.css, style2.css, and updated search icon styles */
 
-/* Root Variables from style2.css */
+/* Root Variables */
 :root {
     --primary-color: #c89666;
     --text-color: #333333;
@@ -8,7 +8,7 @@
     --card-background: #ffffff;
 }
 
-/* General Styles from style.css */
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -36,81 +36,56 @@ a {
     color: #c89666;
 }
 
-/* Header Styles from style.css */
-header {
-    position: sticky;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    top: 0;
-    z-index: 1000;
-    padding: 20px;
+/* Navbar Styles */
+.navbar {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background: #050505;
-    color: white;
+    padding: 20px 0; /* Adjusted padding for vertical spacing */
+    background: #050505; /* Exact black background */
 }
 
 .nav-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    padding: 0 15px; /* Match container padding */
+    padding-left: 60px; /* Space for the toggler */
 }
 
-nav a.current-page {
-    border-bottom: 3px solid #c89666;
-    padding-bottom: 5px;
-}
-
-.logo img {
+.navbar-brand.logo img {
     height: 70px;
     width: auto;
 }
 
-nav {
+.navbar-nav {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-nav a {
-    color: white;
+.nav-link {
+    color: white !important;
     margin: 0 15px;
     font-size: 16px;
     text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
-nav a:hover {
-    color: #e1b382;
+.nav-link:hover {
+    color: #e1b382 !important;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
+.nav-link.current-page {
+    border-bottom: 3px solid #c89666;
+    padding-bottom: 5px;
 }
 
-h2, h3, h4 {
-    text-align: center;
-    color: #c89666;
+/* Navbar Icons */
+.icon-container {
+    display: flex;
+    gap: 20px; /* Space between icons */
+    right: 30px;
 }
 
-/* Header Icons (Updated) */
-.cart-icon, .user-icon, .search-container {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.user-icon {
-    right: 20px;
-}
-
-.cart-icon {
-    right: 60px;
-}
-
-.search-container {
-    right: 130px;
+.search-container, .cart-icon, .user-icon {
     display: flex;
     align-items: center;
 }
@@ -120,6 +95,7 @@ h2, h3, h4 {
     font-size: 1.5rem;
     cursor: pointer;
     transition: color 0.3s ease;
+    right: 30px;
 }
 
 .search-container i:hover {
@@ -144,6 +120,10 @@ h2, h3, h4 {
     width: 150px;
 }
 
+.search-container.hidden {
+    display: none; /* Class to hide the search container */
+}
+
 .cart-icon a, .user-icon a {
     color: white;
     font-size: 1.5rem;
@@ -154,15 +134,16 @@ h2, h3, h4 {
     color: #c89666;
 }
 
-header h1 {
-    color: #000000;
+h2, h3, h4 {
+    text-align: center;
+    color: #c89666;
 }
 
 main {
-    padding: 20px;
+    padding-top: 150px;
 }
 
-/* Backgrounds from style.css */
+/* Backgrounds */
 .reptile-bg {
     background-image: url("../kepek/deskopt_reptile.png");
 }
@@ -172,7 +153,7 @@ main {
     background-size: cover;
 }
 
-/* Hero Section from style.css */
+/* Hero Section */
 .hero {
     display: flex;
     align-items: center;
@@ -199,7 +180,7 @@ main {
     text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
 }
 
-/* Slider Section from style.css */
+/* Slider Section */
 .slider-section {
     width: 100%;
     max-width: 1200px;
@@ -243,7 +224,7 @@ main {
     text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6), 0px 0px 15px rgba(0, 0, 0, 0.7);
 }
 
-/* Product Slider from style.css */
+/* Product Slider */
 .product-slider {
     position: relative;
     max-width: 500px;
@@ -290,7 +271,7 @@ button.prev:hover, button.next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Signup from style.css */
+/* Signup */
 .signup {
     padding: 20px;
     border-radius: 8px;
@@ -307,7 +288,7 @@ button.prev:hover, button.next:hover {
     font-size: 16px;
 }
 
-/* Product Grid from style.css */
+/* Product Grid */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -350,13 +331,11 @@ button.prev:hover, button.next:hover {
     color: black;
 }
 
-/* Product Card from style2.css */
+/* Product Card */
 .cont {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
     width: 100%;
     margin-bottom: 500px;
+    padding: 0 15px;
 }
 
 .product-card {
@@ -366,25 +345,28 @@ button.prev:hover, button.next:hover {
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 350px;
     border: 2px solid #e0e0e0;
+}
+
+.product-card.card {
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    transform: scale(1.05);
     border-color: var(--primary-color);
 }
 
 .product-card__image {
-    height: 350px;
     width: 100%;
-    object-fit: cover;
     overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background-color: #f8f8f8;
 }
 
-.product-card__image img {
+.product-card__image img.card-img-top {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -395,31 +377,32 @@ button.prev:hover, button.next:hover {
     transform: scale(1.05);
 }
 
-.product-card__info {
+.product-card__info.card-body {
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 220px;
+    flex-grow: 1;
+    min-height: 150px;
 }
 
-.product-card__title {
+.product-card__title.card-title {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 10px;
     color: var(--text-color);
-}
-
-.product-card__description {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 20px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .product-card__price-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .product-card__price {
@@ -428,7 +411,7 @@ button.prev:hover, button.next:hover {
     color: var(--primary-color);
 }
 
-.product-card__btn {
+.product-card__btn.btn {
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -436,15 +419,14 @@ button.prev:hover, button.next:hover {
     border-radius: 50px;
     font-size: 0.9rem;
     font-weight: 600;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.product-card__btn:hover {
+.product-card__btn.btn:hover {
     background-color: #e1b382;
 }
 
-/* Product Detail from style.css */
+/* Product Detail */
 .product-detail {
     display: flex;
     justify-content: space-between;
@@ -508,7 +490,7 @@ button.prev:hover, button.next:hover {
     max-width: 600px;
 }
 
-/* Buttons from style.css */
+/* Buttons */
 button {
     background: #111;
     color: white;
@@ -531,7 +513,6 @@ button:hover {
     font-size: 16px;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
-    margin-top: 15px;
 }
 
 .buy-btn:hover {
@@ -546,11 +527,40 @@ button:hover {
     text-decoration: none;
     font-size: 18px;
     border-radius: 5px;
-    transition: 0.3s;
+    transition: background 0.3s;
+    outline: none; /* Remove default outline */
+    border: none; /* Ensure no border */
 }
 
 .shop-now-btn:hover {
     background: #e1b382;
+}
+
+.shop-now-btn:focus,
+.shop-now-btn:focus-visible,
+.shop-now-btn:active {
+    outline: none !important; /* Remove blue outline on focus/active */
+    box-shadow: none !important; /* Remove Bootstrap's focus shadow */
+    background: #c89666 !important; /* Prevent blue film on click */
+}
+
+/* Override Bootstrap's btn-primary styles for shop-now-btn */
+a.shop-now-btn.btn.btn-primary {
+    background: #c89666; /* Match your custom color */
+    border: none; /* Remove Bootstrap border */
+    outline: none !important; /* Remove outline */
+}
+
+a.shop-now-btn.btn.btn-primary:hover {
+    background: #e1b382; /* Match your hover color */
+}
+
+a.shop-now-btn.btn.btn-primary:focus,
+a.shop-now-btn.btn.btn-primary:focus-visible,
+a.shop-now-btn.btn.btn-primary:active {
+    background: #c89666 !important; /* Prevent blue film on click */
+    outline: none !important; /* Remove blue outline */
+    box-shadow: none !important; /* Remove focus shadow */
 }
 
 .remove-btn {
@@ -569,7 +579,7 @@ button:hover {
     background-color: #e60000;
 }
 
-/* Form Styles from style.css */
+/* Form Styles */
 form {
     background: #333;
     padding: 20px;
@@ -605,16 +615,13 @@ form button:hover {
     transform: scale(1.05);
 }
 
-/* Footer from style.css */
-footer {
-    margin-top: auto;
-    text-align: center;
+/* Footer */
+.footer {
     background: #050505;
     color: white;
-    padding: 20px;
 }
 
-/* About Section from style.css */
+/* About Section */
 #about {
     max-width: 900px;
     margin: 50px auto;
@@ -671,15 +678,16 @@ footer {
     margin: 20px 0;
 }
 
-/* Payment Section from style.css */
+/* Payment Section */
 #payment {
     width: 80%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 60px auto;
     background: #222;
     padding: 20px;
     border-radius: 8px;
     color: white;
+    
 }
 
 #order-summary {
@@ -741,7 +749,7 @@ input {
     transform: scale(1.05);
 }
 
-/* Login Section from style.css */
+/* Login Section */
 .login-section {
     display: flex;
     justify-content: center;
@@ -810,11 +818,11 @@ input[type="submit"]:hover {
     text-decoration: underline;
 }
 
-/* Billing Section from style.css */
+/* Billing Section */
 #billing {
     width: 80%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 100px auto 20px auto; /* Növelt felső margó, hogy ne ütközzön a headerrel */
     background: #222;
     padding: 20px;
     border-radius: 8px;
@@ -880,7 +888,8 @@ select {
     transform: scale(1.05);
 }
 
-/* Cart Items from style.css */
+
+/* Cart Items */
 .cart-item {
     display: flex;
     align-items: center;
@@ -935,12 +944,12 @@ select {
     text-align: center;
 }
 
-/* Profile Section from style.css */
+/* Profile Section */
 .profile-section {
     padding: 40px 20px;
     border-radius: 10px;
     margin: 20px auto;
-    max-width: 800px;
+    max-width: 1500px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -1005,7 +1014,7 @@ select {
     transform: scale(1.05);
 }
 
-/* Admin User Management from style.css */
+/* Admin User Management */
 .user-table {
     width: 100%;
     border-collapse: collapse;
@@ -1036,7 +1045,7 @@ select {
     cursor: pointer;
 }
 
-/* Admin Order Management from style.css */
+/* Admin Order Management */
 .order-table {
     width: 100%;
     border-collapse: collapse;
@@ -1098,7 +1107,7 @@ select {
     margin-right: auto;
 }
 
-/* Sorting Container from style2.css */
+/* Sorting Container */
 .sorting-container {
     display: flex;
     align-items: center;
@@ -1155,14 +1164,142 @@ select {
     color: white;
 }
 
+/* Navbar Toggler and Collapse Styles */
+.navbar-toggler {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none; /* Remove white outline */
+    background: transparent; /* Ensure no background */
+    padding: 0.25rem 0.75rem; /* Default Bootstrap padding */
+}
 
-/* Miscellaneous from style.css */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* White stripes */
+}
+
+.navbar-toggler:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: none; /* Remove Bootstrap focus shadow */
+}
+
+.navbar-collapse {
+    background: #050505; /* Match navbar background */
+    position: fixed;
+    top: 0;
+    left: -100%; /* Start off-screen to the left */
+    width: 250px; /* Fixed width for the menu */
+    height: 100%; /* Full height */
+    transition: left 0.3s ease; /* Smooth slide-in */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-collapse.show {
+    left: 0; /* Slide in from the left */
+}
+
+.navbar-collapse .navbar-nav {
+    flex-direction: column; /* Force vertical stacking in collapsed state */
+    width: 100%;
+}
+
+.nav-item {
+    width: 100%;
+    text-align: left; /* Align text to the left */
+}
+
+.nav-link {
+    padding: 10px 15px; /* Increase padding for touch-friendliness */
+    display: block; /* Ensure links take full width and stack */
+}
+
+.navbar-brand.logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem; /* Smaller size */
+    cursor: pointer;
+}
+
+.navbar-close-btn:hover {
+    color: #e1b382;
+}
+
+/* Miscellaneous */
 .white {
     color: white;
 }
 
 /* Responsive Design */
+@media (min-width: 992px) {
+
+    .navbar-toggler {
+        display: none; /* Hide toggler on larger screens */
+    }
+
+    .nav-container {
+        padding-left: 15px; /* Reset padding on larger screens */
+    }
+
+    .navbar-collapse {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        left: 0;
+        transition: none;
+    }
+
+    .navbar-collapse .navbar-nav {
+        flex-direction: row; /* Horizontal links on larger screens */
+    }
+
+    .navbar-close-btn {
+        display: none; /* Hide close button on larger screens */
+    }
+
+    .search-container {
+        position: absolute;
+        top: 50%;
+        right: 145px; /* Position to the left of icon-container */
+        transform: translateY(-50%);
+    }
+
+    .icon-container {
+        gap: 20px; /* Maintain spacing between cart and user icons */
+    }
+}
+
+@media (max-width: 991px) and (min-width: 577px) {
+    .logo {
+        position: relative;
+        left: -15px; /* Move left */
+    }
+    .search-container {
+        position: absolute;
+        top: 50%;
+        right: 145px; /* Position to the left of icon-container */
+        transform: translateY(-50%);
+    }
+}
+
 @media (max-width: 768px) {
+    .logo {
+        position: relative;
+        left: -15px; /* Move left */
+    }
     #about {
         padding: 20px;
     }
@@ -1181,23 +1318,34 @@ select {
     }
 
     .cart-icon a, .user-icon a, .search-container i {
-        font-size: 1.2rem;
+        font-size: 1.3rem; /* Slightly larger than smallest size (1.2rem), smaller than original (1.5rem) */
+    }
+
+    .icon-container {
+        gap: 15px;
+    }
+
+    .cont {
+        padding: 0 10px;
+    }
+
+    .product-card__title.card-title {
+        font-size: 1.3rem;
+    }
+
+    .product-card__info.card-body {
+        min-height: 120px;
     }
 
     .search-container {
-        right: 112px;
+        position: absolute;
+        top: 50%;
+        right: 120px; /* Position to the left of icon-container */
+        transform: translateY(-50%);
     }
 
-    .cart-icon {
-        right: 50px;
-    }
-
-    .user-icon {
-        right: 15px;
-    }
-
-    .search-container.active input {
-        width: 120px;
+    .products-row {
+        column-gap: 2rem; /* Smaller horizontal gap on mobile */
     }
 }
 
@@ -1213,54 +1361,1010 @@ select {
     }
 }
 
-@media (max-width: 480px) {
-    .cont {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .product-card {
-        border: none;
-    }
-
-    .product-card__image {
-        height: 200px;
-    }
-
-    .product-card__title {
-        font-size: 1.3rem;
-    }
-
-    .product-card__description {
-        font-size: 0.8rem;
+@media (max-width: 576px) {
+    .product-card__title.card-title {
+        font-size: 1.2rem;
     }
 
     .product-card__price {
         font-size: 1.1rem;
     }
 
-    .product-card__btn {
+    .product-card__btn.btn {
         padding: 8px 16px;
         font-size: 0.8rem;
     }
 
     .search-container {
-        right: 70px;
+        position: absolute;
+        top: 50%;
+        left: 70px; /* Position right beside the toggler */
+        transform: translateY(-50%);
+        z-index: 10; /* Ensure it stays above other elements */
     }
 
-    .cart-icon {
-        right: 40px;
+    .icon-container {
+        position: absolute;
+        top: 50%;
+        right: 25px; /* Moved further from the right border (was 15px) */
+        transform: translateY(-50%);
+        gap: 15px;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        justify-content: flex-end; /* Align cart and user icons to the right */
     }
 
-    .user-icon {
-        right: 10px;
+    .navbar-nav {
+        text-align: left; /* Align links to the left in collapsed state */
     }
 
-    .cart-icon a, .user-icon a, .search-container i {
-        font-size: 1rem;
+    .nav-link.current-page {
+        display: inline-block; /* Use inline-block to limit border width to text */
+        border-bottom: 3px solid #c89666;
+        padding-bottom: 5px;
+        width: auto; /* Let the width match the text */
+    }
+}
+
+@media (max-width: 480px) {
+    .cont {
+        padding: 0 5px;
+    }
+
+    .product-card__info.card-body {
+        min-height: 100px;
     }
 
     .search-container.active input {
         width: 100px;
+    }
+
+    .cart-icon a, .user-icon a, .search-container i {
+        font-size: 1.2rem; /* Slightly smaller than 1.3rem for very small screens */
+    }
+
+    .search-container {
+        left: 70px; /* Adjust for very small screens */
+    }
+    .icon-container{
+        right: 20px;
+    }
+}
+
+/* Ensure navbar-collapse overlaps other elements when open */
+.navbar-collapse {
+    z-index: 1000; /* High z-index to overlap other elements */
+}
+
+/* Default z-index for search and icons */
+.search-container {
+    z-index: 10; /* Already set in your @media (max-width: 576px) */
+}
+
+.icon-container {
+    z-index: 10; /* Add this to match search-container */
+}
+
+/* Hide search and icons when navbar is expanded in phone view */
+@media (max-width: 576px) {
+    .navbar-collapse.show ~ .search-container,
+    .navbar-collapse.show ~ .icon-container {
+        display: none; /* Hide when navbar is open */
+    }
+}
+
+.search-container input {
+    display: none;
+    width: 0;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: white;
+    transition: width 0.3s ease; /* Smooth width transition */
+    margin-left: 10px;
+}
+
+.search-container.active input {
+    display: block;
+    width: 150px; /* Adjust as needed */
+}
+
+/* Custom Card Styles */
+.custom-card {
+    border-radius: 1.5rem; /* More rounded edges */
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s; /* Optional: hover effect */
+    object-fit: cover; /* Ensures image fills the space */
+}
+
+.custom-card:hover {
+    transform: translateY(-5px); /* Optional: slight lift on hover */
+}
+
+.products-row {
+    display: flex;
+    justify-content: center; /* Center the cards */
+    column-gap: 10rem; /* Horizontal gap only */
+    row-gap: 0; /* Ensures no extra vertical gap */
+    flex-wrap: wrap; /* Allows wrapping but controls spacing */
+}
+
+
+
+.custom-card .card-img-top {
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.custom-card .card-title {
+    font-size: 1.6rem; /* Bigger text (was default h3 size, ~1.17rem) */
+    font-weight: 530; /* Bolder text */
+}
+
+.custom-card .card-text {
+    font-size: 1.3rem; /* Bigger text (was default p size, ~1rem) */
+    font-weight: 300; /* Bolder text */
+}
+
+
+.buy-btn {
+    background: #c89666;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+.buy-btn:hover {
+    background: #e1b382;
+    transform: scale(1.1);
+}
+
+
+form button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    background: #c89666;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+form button:hover {
+    background: #e1b382;
+    transform: scale(1.05);
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+}
+
+.signup {
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: 30px auto;
+}
+
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+}
+
+
+#place-order-btn {
+    display: block;
+    width: 100%;
+    background: #c89666;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background 0.3s, transform 0.3s;
+}
+#place-order-btn:hover {
+    background: #e1b382;
+    transform: scale(1.05);
+}
+
+
+/* Billing Section - Szebb megjelenés, kártyaszerű design */
+#billing {
+    width: 80%;
+    max-width: 600px;
+    margin: 100px auto; /* Növelt margó a header alá */
+    background: #1e1e1e; /* Sötétebb, modern háttér */
+    padding: 25px;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Finom árnyék */
+    transition: transform 0.3s ease-in-out;
+}
+
+#billing:hover {
+    transform: scale(1.02); /* Kis kiemelés hoverkor */
+}
+
+/* Receipt Box - Jobb struktúra */
+#receipt {
+    background: #292929; /* Szürkésebb tónus a jobb kontraszt érdekében */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 120px; /* Kicsit nagyobb alapértelmezett méret */
+    overflow-y: auto;
+}
+
+/* Delivery Options - Szebb kártyás megjelenés */
+#delivery-options {
+    margin-top: 20px;
+    padding: 15px;
+    background: #292929;
+    border-radius: 10px;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Távolságok és elrendezések */
+.container-distance {
+    margin-top: 60px; /* Kicsit nagyobb távolság a header és tartalom között */
+}
+
+.index-main-top-distance {
+    padding-top: 100px; /* További padding a fejléchez */
+}
+
+/* Place Order gomb - Szebb dizájn */
+#place-order-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #c89666, #e1b382);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+#place-order-btn:hover {
+    background: linear-gradient(135deg, #e1b382, #c89666);
+    transform: scale(1.05);
+}
+
+/* Termékkezelő oldal specifikus stílusok */
+.container-distance {
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.container-distance h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container-distance a button {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container-distance a button:hover {
+    background-color: #e65c00;
+}
+
+/* Táblázat stílus */
+.white {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.white th, .white td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.white th {
+    background-color: #444;
+    color: white;
+}
+
+.white tr:nth-child(even) {
+    background-color: #222;
+}
+
+.white a {
+    color: #ff6600;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.white a:hover {
+    text-decoration: underline;
+}
+
+/* Profile Section */
+.profile-section {
+    padding: 50px 15px;
+    background-color: #333; /* Dark background */
+}
+
+.profile-container {
+    background-color: #444; /* Darker container background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Darker shadow */
+    margin-bottom: 40px;
+}
+
+.profile-container h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff; /* White text */
+}
+
+/* Table Styling */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #444; /* Dark table background */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); /* Darker shadow */
+}
+
+.order-table th, .order-table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    border-bottom: 1px solid #555; /* Darker border */
+}
+
+.order-table th {
+    background-color: #222; /* Darker header background */
+    color: #fff;
+    font-weight: 700;
+}
+
+.order-table td {
+    color: #ddd; /* Lighter text color for readability */
+}
+
+.order-table tr:hover {
+    background-color: #555; /* Darker hover effect */
+}
+
+/* Button Styling for "Megnéz" */
+.order-table button {
+    background-color: #f0a500; /* Retain original button color */
+    border: none;
+    padding: 12px 24px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 100px;
+}
+
+.order-table button:hover {
+    background-color: #e68a00;
+}
+
+/* Back Button Styling */
+.back-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #222; /* Dark background */
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 30px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #f0a500; /* Button hover color */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    /* Adjust Table for Mobile View */
+    .order-table th, .order-table td {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .profile-container {
+        padding: 25px;
+    }
+
+    .profile-container h2 {
+        font-size: 26px;
+    }
+
+    .order-table button {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+
+    /* Ensure table scrolls horizontally on small screens */
+    .order-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Adjust Back Button for Small Screens */
+    .back-button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+/* For Even Smaller Screens (Smartphones in Portrait Mode) */
+@media (max-width: 480px) {
+    .profile-container h2 {
+        font-size: 22px;
+    }
+
+    .order-table th, .order-table td {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .order-table button {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .back-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+
+
+.recommended-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #f1f1f1; /* A háttér színét világos szürkére állítjuk */
+    border-radius: 8px;
+    padding: 15px 0;
+    width: 100%;  /* A szélességet 100%-ra állítjuk, hogy kitöltse a rendelkezésre álló teret */
+    margin: 50px auto 0; /* Felső margó hozzáadása, hogy lejjebb legyen a szekció (50px) */
+}
+
+.recommended-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    padding: 10px 0;
+    max-width: 90%; /* A konténer szélessége 90%-ra van állítva, így a szekció szélesebb lesz */
+}
+
+.recommended-item {
+    display: inline-block;
+    width: 220px; /* Még szélesebb termékek, hogy nagyobbak legyenek */
+    text-align: center;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Árnyék hozzáadása */
+    transition: transform 0.3s ease;
+}
+
+.recommended-item:hover {
+    transform: scale(1.05); /* Hover effekt, hogy jobban kiemelje a terméket */
+}
+
+.recommended-item img {
+    width: 200px;  /* A képek szélessége most már 200px */
+    height: 200px; /* A képek magassága 200px */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px; /* A kép és a név közötti távolság növelése */
+}
+
+.recommended-item p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.recommended-item .product-price {
+    font-weight: bold;
+    font-size: 16px;
+    color: #c89666;
+}
+
+.recommended-item .product-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.recommended-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.recommended-container::-webkit-scrollbar-thumb {
+    background: #c89666;
+    border-radius: 5px;
+}
+
+.recommended-container::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+.recommended-wrapper .line {
+    height: 2px;
+    width: 100%;
+    background-color: #c89666; /* A vonal színe az ajánlott termékek alatt */
+    margin-top: 20px; /* A vonal eltartása a termékek aljától */
+}
+
+.trending-image-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-color: #f1f1f1; /* Ha szükséges háttérszín */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 0; /* Eltávolítja a margót az alján */
+
+}
+
+.trending-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Az effectek eltávolítva */
+}
+
+.trending-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.4); /* Átlátszó háttér */
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 30px;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.trending-button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #c89666;
+}
+.trending-image-container img {
+    display: block; /* Elkerüli, hogy legyen függőleges térköz */
+    width: 100%; /* A kép szélessége 100%, hogy teljesen kitöltse a konténert */
+    height: auto; /* Magasság arányos legyen */
+}
+
+.trending-image-container + .trending-image-container {
+    margin-top: 0; /* Eltávolítja a margót a második container felett */
+}
+
+
+/* Kosár fő konténer */
+#billing {
+    max-width: 800px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Kosár fejléc */
+#billing h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #111;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Kosár elemek listája */
+#cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+/* Egyes termékek */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.2s ease-in-out;
+    width: 730px;
+}
+
+.cart-item:hover {
+    background: #c89666;
+}
+
+/* Termékkép */
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Termék adatai */
+.cart-item .item-details {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.cart-item .item-details h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+}
+
+.cart-item .item-details p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 0;
+}
+
+/* Mennyiség gombok */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Távolság a gombok között */
+}
+
+.quantity-btn {
+    background: #111;
+    color: #fff;
+    border: none;
+    width: 35px; /* Kicsit nagyobb, hogy mobilon ne torzuljon */
+    height: 35px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+}
+
+
+
+.quantity-btn:hover {
+    background: #333;
+}
+
+.quantity {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Törlés gomb */
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.delete-btn:hover {
+    color: #cc0000;
+}
+
+/* Összegzés */
+#total {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Fizetés gomb */
+#place-order-btn {
+    background: #111;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#place-order-btn:hover {
+    background: #c89666;
+}
+
+/* Mobil nézet optimalizálás */
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column; /* Mobilon a termék és a gombok egymás alá kerülnek */
+        align-items: flex-start;
+    }
+
+    .quantity-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .quantity-btn {
+        width: 40px; /* Még nagyobb, hogy könnyebb legyen nyomni */
+        height: 40px;
+        font-size: 22px;
+    }
+
+    /* Total és Order gomb igazítása mobilon */
+    #total {
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
+    }
+
+    #place-order-btn {
+        font-size: 16px;
+        padding: 14px;
+    }
+    
+}
+
+/* Profile Section */
+.profile-section {
+    padding: 40px 15px;
+    background-color: #222222;
+    color: #fff;
+}
+
+.profile-container {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    margin: 20px auto;
+}
+
+.profile-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #f0a500;
+    text-align: center;
+}
+
+.profile-container p {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-container hr {
+    border-top: 2px solid #f0a500;
+}
+
+/* Table Styling */
+.user-table-wrapper {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow-x: auto; /* Scroll if the content overflows */
+    -webkit-overflow-scrolling: touch;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #444;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.user-table th, .user-table td {
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+    color: #fff;
+    border-bottom: 1px solid #555;
+}
+
+.user-table th {
+    background-color: #222;
+    color: #f0a500;
+}
+
+.user-table tr:hover {
+    background-color: #555;
+}
+
+.user-table button, .delete-button {
+    background-color: #f0a500;
+    border: none;
+    padding: 12px 20px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.user-table button:hover, .delete-button:hover {
+    background-color: #e68a00;
+}
+
+/* Form Styles for Role Update */
+.inline-form select,
+.inline-form button {
+    padding: 8px 12px;
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.inline-form button {
+    background-color: #f0a500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.inline-form button:hover {
+    background-color: #e68a00;
+}
+
+/* Back Button Styling */
+.back-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #343a40;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 30px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #f0a500;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 20px;
+    }
+
+    .profile-container h2 {
+        font-size: 24px;
+    }
+
+    .profile-container p {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .user-table th, .user-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .user-table button, .delete-button {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .back-button {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+
+    .user-table-wrapper {
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        overflow-x: auto;
+    }
+
+    .user-table {
+        min-width: 500px; /* Adjust to make sure table fits well */
+        width: 100%;
+    }
+
+    .user-table th, .user-table td {
+        white-space: nowrap; /* Prevent wrapping for smaller screens */
+    }
+
+    /* Mobile form button adjustments */
+    .inline-form {
+        flex-direction: column; /* Stack the role select and update button */
+        gap: 10px; /* Add some space between the elements */
+    }
+
+    .inline-form button {
+        width: 100%; /* Make buttons full width on mobile */
+    }
+
+    /* Adjust table buttons in the same column layout for mobile */
+    .user-table .inline-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
 }
