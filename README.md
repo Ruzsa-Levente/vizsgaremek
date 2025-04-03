@@ -1,10 +1,15 @@
 Zeljenka Milán és Ruzsa Levente vizsgaremeke
 
-Ahhoz hogy mukodesbe hozzuk: keszitsunk egy adatbazist webshop neven
-ahova bemasoljuk eloszor a webshop.sql kodot majd a pelda adatokat,
-figyeljunk arra hogy a phpmyadmin felhasznalonevunk root legyen jelszo nelkul.
-Ha mindez megvan akkor mar csak futtatnunk kell a kodot.
+-Kiprobalasa a webshop linkjen, admin belepeshez: felhasznalonev:1 
+                                                  jelszo:1
 
-A fájlok onedrive linkje: https://1drv.ms/f/s!AmG9r8FmS_TxadYgwJtun6GHpgo?e=M7vAGi
+-Ha lokálisan akarjuk futtatni: Toltsuk le a fajlokat a onedrive linkrol
+amit a C:\xampp\htdocs mappa helyezzunk el. Ebben lesz egy sql mappa ahol van 
+egy webshop es egy pelda_adatok nevu fajl. xamppban csinaljunk egy adatbazist webshop
+neven es illesszuk be a webshop sql kodot majd a pelda_adatok kodjat. Ha admin
+funkciokat is szeretnenk akkor egy regisztralas utan a felhasznalok tablaban 
+adhatunk magunknak superadmin jogosultsagot. Ezutan ki es be jelentkezes.
 
-A webshop linkje: http://heetclothing.hu/index.php
+-A fájlok onedrive linkje: https://1drv.ms/f/s!AmG9r8FmS_TxadYgwJtun6GHpgo?e=M7vAGi
+
+-A webshop linkje: http://heetclothing.hu/index.php
