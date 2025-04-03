@@ -70,7 +70,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     </div>
 </nav>
 
-<main class="main-content d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 200px);">
+<main class="main-content d-flex align-items-center justify-content-center mt-5">
     <div class="login-container container text-center animate__fadeIn">
         <h2 class="login-title">Bejelentkezés</h2>
         <p class="login-subtitle animate__fadeInUp animate__delay-1s">Lépj be a Heet Clothing világába!</p>
