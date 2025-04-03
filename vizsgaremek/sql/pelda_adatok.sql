@@ -1,18 +1,19 @@
 -- Termékek feltöltése (kezdeti készlet 0, mert a termek_meretek tábla adja meg)
-INSERT INTO termekek (nev, leiras, kategoria, ar, keszlet) 
+-- Termékek feltöltése (kezdeti készlet 0, mert a termek_meretek tábla adja meg)
+INSERT INTO termekek (nev, leiras, kategoria, ar, keszlet, discounted_price) 
 VALUES 
-('Fekete, logós póló', 'Egy egyszerű, fekete színű póló, pamut anyagból.', 'póló', 5000, 0),
-('Fekete, logós pulóver', 'Klasszikus fekete pulóver, kényelmes viselet.', 'pulóver', 12000, 0),
-('Crimson, logós pulóver', 'Meleg és puha crimson pulóver, tökéletes hűvös időre.', 'pulóver', 12000, 0),
-('Piros, logós póló', 'Sportos és kényelmes piros póló, mindennapi viseletre.', 'póló', 5000, 0),
-('Zöld, logós pulóver', 'Letisztult zöld pulóver, amely kényelmes és divatos viselet.', 'pulóver', 12000, 0),
-('Szürke, logós top', 'Stílusos szürke top, könnyű és légáteresztő anyagból.', 'top', 7000, 0),
-('Kék, logós pulóver', 'Stílusos kék pulóver, puha és kényelmes anyagból, ideális választás a hétköznapokra.', 'pulóver', 12000, 0),
-('Bordó, kapucnis pulóver', 'Meleg és praktikus bordó kapucnis pulóver, tökéletes hideg napokra.', 'pulóver', 13000, 0),
-('Fekete, kapucnis pulóver', 'Kényelmes fekete kapucnis pulóver, amely tökéletes választás mindennapi viseletre.', 'pulóver', 13000, 0),
-('Kék, kapucnis pulóver', 'Friss kék kapucnis pulóver, puha anyaggal, minden alkalomra kényelmes viselet.', 'pulóver', 13000, 0),
-('Rózsaszín, logós póló', 'Lágy rózsaszín póló, egyszerű dizájnnal és kényelmes pamut anyagból.', 'póló', 5500, 0),
-('Barna, logós póló', 'Stílusos barna póló, amely minden nap kényelmes és praktikus viseletet biztosít.', 'póló', 5000, 0);
+('Fekete, logós póló', 'Egy egyszerű, fekete színű póló, pamut anyagból.', 'póló', 5000, 0, NULL),
+('Fekete, logós pulóver', 'Klasszikus fekete pulóver, kényelmes viselet.', 'pulóver', 12000, 0, NULL),
+('Crimson, logós pulóver', 'Meleg és puha crimson pulóver, tökéletes hűvös időre.', 'pulóver', 12000, 0, 10999),
+('Piros, logós póló', 'Sportos és kényelmes piros póló, mindennapi viseletre.', 'póló', 5000, 0, NULL),
+('Zöld, logós pulóver', 'Letisztult zöld pulóver, amely kényelmes és divatos viselet.', 'pulóver', 12000, 0, NULL),
+('Szürke, logós top', 'Stílusos szürke top, könnyű és légáteresztő anyagból.', 'top', 7000, 0, NULL),
+('Kék, logós pulóver', 'Stílusos kék pulóver, puha és kényelmes anyagból, ideális választás a hétköznapokra.', 'pulóver', 12000, 0, NULL),
+('Bordó, kapucnis pulóver', 'Meleg és praktikus bordó kapucnis pulóver, tökéletes hideg napokra.', 'pulóver', 13000, 0, 10999),
+('Fekete, kapucnis pulóver', 'Kényelmes fekete kapucnis pulóver, amely tökéletes választás mindennapi viseletre.', 'pulóver', 13000, 0, NULL),
+('Kék, kapucnis pulóver', 'Friss kék kapucnis pulóver, puha anyaggal, minden alkalomra kényelmes viselet.', 'pulóver', 13000, 0, 10999),
+('Rózsaszín, logós póló', 'Lágy rózsaszín póló, egyszerű dizájnnal és kényelmes pamut anyagból.', 'póló', 5500, 0, NULL),
+('Barna, logós póló', 'Stílusos barna póló, amely minden nap kényelmes és praktikus viseletet biztosít.', 'póló', 5000, 0, NULL);
 
 -- Termék méretek feltöltése (minden termékhez S, M, L méretek példaként)
 INSERT INTO termek_meretek (termek_azon, meret, keszlet)
@@ -65,4 +66,4 @@ VALUES
 -- Felhasználók feltöltése (példa)
 INSERT INTO felhasznalok (felhasznalonev, email, jelszo, jogosultsag)
 VALUES
-('user1', 'user1@example.com', '$2y$10$hashedpasswordexample', 'user');
+('1', 'user1@example.com', '$2y$12$4y/sI67PvY4jXLN46fB.vOARWSgORqkcmImv.EIr/3embLcAqRjzG', 'superadmin');
