@@ -6,71 +6,88 @@ header("Content-Type: application/json");
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (!$data || empty($data['cartItems'])) {
-    echo json_encode(["success" => false, "message" => "No order data received."]);
+    echo json_encode(["success" => false, "message" => "Nincs rendelési adat!"]);
     exit;
 }
 
-$conn->begin_transaction(); // Tranzakció indítása
+$conn->begin_transaction();
 
 try {
-    // Vásárló rögzítése (példa, ha már regisztrált, itt lekérheted az adatait)
-    $vasarlo_nev = "Vendég"; // Ha van bejelentkezett user, akkor itt módosítsd
-    $vasarlo_email = "guest@example.com";
-    
-    $stmt = $conn->prepare("INSERT INTO vasarlok (nev, email) VALUES (?, ?)");
-    $stmt->bind_param("ss", $vasarlo_nev, $vasarlo_email);
+    // Vásárló adatainak rögzítése
+    $deliveryMethod = $data['delivery'];
+    $customer = $data['customer'];
+
+    if ($deliveryMethod === "home") {
+        $vasarlo_nev = $data['shipping']['name'] ?? $customer['name'];
+        $vasarlo_email = $data['shipping']['email'] ?? $customer['email'];
+        $vasarlo_telefon = $data['shipping']['phone'] ?? $customer['phone'];
+        $vasarlo_cim = $data['shipping']['address'] . ", " . $data['shipping']['city'] . " " . $data['shipping']['zip'];
+    } else {
+        $vasarlo_nev = $data['shipping']['name'] ?? $customer['name'];
+        $vasarlo_email = $data['shipping']['email'] ?? $customer['email'];
+        $vasarlo_telefon = $data['shipping']['phone'] ?? $customer['phone'];
+        $vasarlo_cim = "In Store Pickup";
+    }
+
+    $stmt = $conn->prepare("INSERT INTO vasarlok (nev, email, telefon, cim) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $vasarlo_nev, $vasarlo_email, $vasarlo_telefon, $vasarlo_cim);
     $stmt->execute();
     $vasarlo_id = $stmt->insert_id;
     $stmt->close();
 
-    // Új rendelés létrehozása
+    // Rendelés létrehozása
     $datum = date("Y-m-d");
     $osszesen = $data["total"];
-    
     $stmt = $conn->prepare("INSERT INTO rendelesek (vasarlo_azon, datum, osszesen) VALUES (?, ?, ?)");
     $stmt->bind_param("isi", $vasarlo_id, $datum, $osszesen);
     $stmt->execute();
     $rendeles_id = $stmt->insert_id;
     $stmt->close();
 
-    // Tétel feldolgozása
+    // Tételek feldolgozása
     foreach ($data["cartItems"] as $item) {
         $termek_nev = $item["name"];
         $mennyiseg = $item["quantity"];
+        $meret = $item["size"];
 
-        // Ellenőrizzük a termék létezését és a készletet
-        $stmt = $conn->prepare("SELECT azon, keszlet FROM termekek WHERE nev = ?");
+        $stmt = $conn->prepare("SELECT azon FROM termekek WHERE nev = ?");
         $stmt->bind_param("s", $termek_nev);
         $stmt->execute();
-        $result = $stmt->get_result();
-        $termek = $result->fetch_assoc();
+        $termek = $stmt->get_result()->fetch_assoc();
         $stmt->close();
 
-        if (!$termek || $termek["keszlet"] < $mennyiseg) {
-            throw new Exception("Not enough stock for {$termek_nev}.");
+        if (!$termek) {
+            throw new Exception("A(z) {$termek_nev} termék nem található!");
         }
 
         $termek_azon = $termek["azon"];
-        $uj_keszlet = $termek["keszlet"] - $mennyiseg;
 
-        // Rendelési tétel hozzáadása
-        $stmt = $conn->prepare("INSERT INTO tetelek (rendeles_azon, termek_azon, mennyiseg) VALUES (?, ?, ?)");
-        $stmt->bind_param("iii", $rendeles_id, $termek_azon, $mennyiseg);
+        $stmt = $conn->prepare("SELECT keszlet FROM termek_meretek WHERE termek_azon = ? AND meret = ?");
+        $stmt->bind_param("is", $termek_azon, $meret);
+        $stmt->execute();
+        $meret_adat = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+
+        if (!$meret_adat || $meret_adat["keszlet"] < $mennyiseg) {
+            throw new Exception("Nincs elegendő készlet a(z) {$termek_nev} termékből ({$meret} méret)!");
+        }
+
+        $stmt = $conn->prepare("INSERT INTO tetelek (rendeles_azon, termek_azon, mennyiseg, meret) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("iiis", $rendeles_id, $termek_azon, $mennyiseg, $meret);
         $stmt->execute();
         $stmt->close();
 
-        // Készlet frissítése
-        $stmt = $conn->prepare("UPDATE termekek SET keszlet = ? WHERE azon = ?");
-        $stmt->bind_param("ii", $uj_keszlet, $termek_azon);
+        $stmt = $conn->prepare("UPDATE termek_meretek SET keszlet = keszlet - ? WHERE termek_azon = ? AND meret = ?");
+        $stmt->bind_param("iis", $mennyiseg, $termek_azon, $meret);
         $stmt->execute();
         $stmt->close();
     }
 
-    $conn->commit(); // Tranzakció véglegesítése
-    echo json_encode(["success" => true, "message" => "Order placed successfully!"]);
-
+    $conn->commit();
+    // Sikeres válasz JSON-ban, de az átirányítást a kliens oldalon kezeljük, így itt nem kell header
+    echo json_encode(["success" => true, "message" => "A rendelés sikeresen feldolgozva!", "rendeles_id" => $rendeles_id]);
 } catch (Exception $e) {
-    $conn->rollback(); // Tranzakció visszavonása hiba esetén
+    $conn->rollback();
     echo json_encode(["success" => false, "message" => $e->getMessage()]);
 }
 
