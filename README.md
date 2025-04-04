@@ -6,6 +6,7 @@ Zeljenka Milán és Ruzsa Levente vizsgaremeke
 amit a C:\xampp\htdocs mappaban helyezzunk el. Ebben lesz egy sql mappa ahol van 
 egy webshop es egy pelda_adatok nevu fajl. xamppban csinaljunk egy adatbazist webshop
 neven es illesszuk be a webshop sql kodot majd a pelda_adatok kodjat. 
+
 ->Admin jogu belepeshez : Adjon a regisztralt felhasznalonak
 superadmint az adatbazisban
 
